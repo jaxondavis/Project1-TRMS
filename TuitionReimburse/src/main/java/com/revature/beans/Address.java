@@ -28,5 +28,22 @@ public class Address {
 	{
 		return null;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public String getZIP() {
+		return ZIP;
+	}
+	
 	
 }

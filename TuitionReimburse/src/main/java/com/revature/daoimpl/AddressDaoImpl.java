@@ -58,7 +58,7 @@ public class AddressDaoImpl implements AddressDao {
 		call.setString(1, addr);
 		call.setString(2, city);
 		call.setString(3, state);
-		call.setString(2, zip);
+		call.setString(4, zip);
 		call.execute();
 		System.out.println("Sequence complete!");
 	}
