@@ -31,16 +31,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>RegisterServlet</display-name>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>com.revature.servlet.RegisterServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>LogoutServlet</display-name>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.revature.servlet.LogoutServlet</servlet-class>
@@ -51,26 +41,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AppFormServlet</display-name>
-    <servlet-name>AppFormServlet</servlet-name>
-    <servlet-class>com.revature.servlet.AppFormServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AppFormServlet</servlet-name>
-    <url-pattern>/appForm</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>ViewAppServlet</display-name>
-    <servlet-name>ViewAppServlet</servlet-name>
-    <servlet-class>com.revature.servlet.ViewAppServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ViewAppServlet</servlet-name>
-    <url-pattern>/viewApp</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>MyAccountServlet</display-name>
     <servlet-name>MyAccountServlet</servlet-name>
     <servlet-class>com.revature.servlet.MyAccountServlet</servlet-class>
@@ -78,5 +48,105 @@
   <servlet-mapping>
     <servlet-name>MyAccountServlet</servlet-name>
     <url-pattern>/myAccount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyAccountApplicationServlet</display-name>
+    <servlet-name>MyAccountApplicationServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountApplicationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccountApplicationServlet</servlet-name>
+    <url-pattern>/myAccount/applications</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesServlet</display-name>
+    <servlet-name>MyEmployeesServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesApplicationServlet</display-name>
+    <servlet-name>MyEmployeesApplicationServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesApplicationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesApplicationServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees/applications</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyAccountEditServlet</display-name>
+    <servlet-name>MyAccountEditServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccountEditServlet</servlet-name>
+    <url-pattern>/myAccount/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyAccountApplicationIDServlet</display-name>
+    <servlet-name>MyAccountApplicationIDServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountApplicationIDServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccountApplicationIDServlet</servlet-name>
+    <url-pattern>/myAccount/applications/applicationID</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyAccountApplicationEditServlet</display-name>
+    <servlet-name>MyAccountApplicationEditServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountApplicationEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccountApplicationEditServlet</servlet-name>
+    <url-pattern>/myAccount/applications/applicationID/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesApplicationIDServlet</display-name>
+    <servlet-name>MyEmployeesApplicationIDServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesApplicationIDServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesApplicationIDServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees/applications/applicationID</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesApplicationEditServlet</display-name>
+    <servlet-name>MyEmployeesApplicationEditServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesApplicationEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesApplicationEditServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees/applications/applicationID/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesApplicationDenyServlet</display-name>
+    <servlet-name>MyEmployeesApplicationDenyServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesApplicationDenyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesApplicationDenyServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees/applications/applicationID/deny</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CurrentEventsServlet</display-name>
+    <servlet-name>CurrentEventsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.CurrentEventsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrentEventsServlet</servlet-name>
+    <url-pattern>/currentEvents</url-pattern>
   </servlet-mapping>
 </web-app>
