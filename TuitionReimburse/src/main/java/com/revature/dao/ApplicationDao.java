@@ -1,5 +1,6 @@
 package com.revature.dao;
 
-public interface ApplicationDao {
+public interface ApplicationDao 
+{
 
 }

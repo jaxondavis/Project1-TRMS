@@ -1,5 +1,6 @@
 package com.revature.dao;
 
-public interface EventDao {
+public interface EventDao 
+{
 
 }

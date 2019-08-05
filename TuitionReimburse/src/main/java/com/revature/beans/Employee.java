@@ -25,8 +25,8 @@ public class Employee {
 		
 	}
 
-	public Employee(int employeeID, String firstname, String lastname, Date birthdate, int reportsTo, String email,
-			String username, String password, int emplTypeID, int addressID, int availReimbID) {
+	public Employee(int employeeID, String firstname, String lastname, Date birthdate, int reportsTo, String email, String username, String password, int emplTypeID, int addressID, int availReimbID) 
+	{
 		this.employeeID = employeeID;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -39,6 +39,114 @@ public class Employee {
 		this.addressID = addressID;
 		this.availReimbID = availReimbID;
 	}
-	
-	
+
+	public int getEmployeeID() 
+	{
+		return employeeID;
+	}
+
+	public void setEmployeeID(int employeeID) 
+	{
+		this.employeeID = employeeID;
+	}
+
+	public String getFirstname() 
+	{
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) 
+	{
+		this.firstname = firstname;
+	}
+
+	public String getLastname() 
+	{
+		return lastname;
+	}
+
+	public void setLastname(String lastname) 
+	{
+		this.lastname = lastname;
+	}
+
+	public Date getBirthdate() 
+	{
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) 
+	{
+		this.birthdate = birthdate;
+	}
+
+	public int getReportsTo() 
+	{
+		return reportsTo;
+	}
+
+	public void setReportsTo(int reportsTo) 
+	{
+		this.reportsTo = reportsTo;
+	}
+
+	public String getEmail() 
+	{
+		return email;
+	}
+
+	public void setEmail(String email) 
+	{
+		this.email = email;
+	}
+
+	public String getUsername() 
+	{
+		return username;
+	}
+
+	public void setUsername(String username) 
+	{
+		this.username = username;
+	}
+
+	public String getPassword() 
+	{
+		return password;
+	}
+
+	public void setPassword(String password) 
+	{
+		this.password = password;
+	}
+
+	public int getEmplTypeID() 
+	{
+		return emplTypeID;
+	}
+
+	public void setEmplTypeID(int emplTypeID) 
+	{
+		this.emplTypeID = emplTypeID;
+	}
+
+	public int getAddressID() 
+	{
+		return addressID;
+	}
+
+	public void setAddressID(int addressID) 
+	{
+		this.addressID = addressID;
+	}
+
+	public int getAvailReimbID() 
+	{
+		return availReimbID;
+	}
+
+	public void setAvailReimbID(int availReimbID) 
+	{
+		this.availReimbID = availReimbID;
+	}
 }
