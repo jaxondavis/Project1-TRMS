@@ -16,7 +16,7 @@ public class Presentation
 		this.presPath = presPath;
 	}
 
-	public int getPresID() 
+	public int getPresID()
 	{
 		return presID;
 	}

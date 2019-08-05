@@ -13,10 +13,6 @@ public class Employee {
 	private String lastname;
 	private Date birthdate;
 	private int reportsTo;
-	private String email;
-	private String username;
-	private String password;
-	private int emplTypeID;
 	private int addressID;
 	private int availReimbID;
 	
@@ -25,17 +21,13 @@ public class Employee {
 		
 	}
 
-	public Employee(int employeeID, String firstname, String lastname, Date birthdate, int reportsTo, String email, String username, String password, int emplTypeID, int addressID, int availReimbID) 
+	public Employee(int employeeID, String firstname, String lastname, Date birthdate, int reportsTo, int addressID, int availReimbID) 
 	{
 		this.employeeID = employeeID;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.birthdate = birthdate;
 		this.reportsTo = reportsTo;
-		this.email = email;
-		this.username = username;
-		this.password = password;
-		this.emplTypeID = emplTypeID;
 		this.addressID = addressID;
 		this.availReimbID = availReimbID;
 	}
@@ -88,46 +80,6 @@ public class Employee {
 	public void setReportsTo(int reportsTo) 
 	{
 		this.reportsTo = reportsTo;
-	}
-
-	public String getEmail() 
-	{
-		return email;
-	}
-
-	public void setEmail(String email) 
-	{
-		this.email = email;
-	}
-
-	public String getUsername() 
-	{
-		return username;
-	}
-
-	public void setUsername(String username) 
-	{
-		this.username = username;
-	}
-
-	public String getPassword() 
-	{
-		return password;
-	}
-
-	public void setPassword(String password) 
-	{
-		this.password = password;
-	}
-
-	public int getEmplTypeID() 
-	{
-		return emplTypeID;
-	}
-
-	public void setEmplTypeID(int emplTypeID) 
-	{
-		this.emplTypeID = emplTypeID;
 	}
 
 	public int getAddressID() 

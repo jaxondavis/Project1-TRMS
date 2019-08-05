@@ -1,12 +1,14 @@
 package com.revature.daoimpl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.revature.beans.Address;
 import com.revature.beans.Employee;
+import com.revature.beans.EmployeeHasType;
+import com.revature.beans.Login;
 import com.revature.dao.EmployeeDao;
 import com.revature.util.ConnFactory;
 
@@ -71,7 +73,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			{
 				if(rs.getInt(1) == userID)
 				{
-					empl = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
+					empl = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),rs.getInt(6),rs.getInt(7));
 				}
 			}
 		}
@@ -79,8 +81,47 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public void updateEmployee(String username, String password, String first, String last, Date dob, int sup, int addID, int avail) throws SQLException 
+	public void updateEmployee(Employee emp, EmployeeHasType empT, Address add, Login log) throws SQLException 
 	{
+		Connection conn = cf.getConnection();
+		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME = ?, BIRTHDATE = ?, REPORTSTO = ? WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, emp.getFirstname());
+		ps.setString(2, emp.getLastname());
+		ps.setDate(3, emp.getBirthdate());
+		ps.setInt(4, emp.getReportsTo());
+		ps.setInt(5, emp.getEmployeeID());
+		ResultSet rs = ps.executeQuery();
 		
+		sql = "UPDATE LOGIN SET EMAIL = ?, PASSWORD = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, log.getEmail());
+		ps.setString(2, log.getPassword());
+		ps.setInt(3, emp.getEmployeeID());
+		rs = ps.executeQuery();
+		
+		sql = "UPDATE ADDRESS SET ADDRESS = ?, CITY = ?, STATE = ?, ZIPCODE = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, add.getAddress());
+		ps.setString(2, add.getCity());
+		ps.setString(3, add.getState());
+		ps.setString(4, add.getZipcode());
+		ps.setInt(5, emp.getEmployeeID());
+		rs = ps.executeQuery();
+		
+		sql = "UPDATE ADDRESS SET ADDRESS = ?, CITY = ?, STATE = ?, ZIPCODE = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, add.getAddress());
+		ps.setString(2, add.getCity());
+		ps.setString(3, add.getState());
+		ps.setString(4, add.getZipcode());
+		ps.setInt(5, emp.getEmployeeID());
+		rs = ps.executeQuery();
+		
+		sql = "UPDATE EMPLOYEEHASTYPE SET TYPEID = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setInt(1, empT.getTypeID());
+		ps.setInt(2, emp.getEmployeeID());
+		rs = ps.executeQuery();
 	}
 }
