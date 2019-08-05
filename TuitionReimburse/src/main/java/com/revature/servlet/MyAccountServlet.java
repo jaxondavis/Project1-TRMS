@@ -1,6 +1,8 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,8 +26,11 @@ public class MyAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("In doPost of MyAccountServlet");
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		pw.write("<h1>Hello, </h1>");
+		pw.close();
 	}
 
 }
