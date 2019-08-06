@@ -11,10 +11,4 @@ public interface EventDao {
 	
 	public abstract void deleteEvent(int eventID) throws SQLException;
 	
-	public abstract void addEventLocation(String addr, String city, String state, String zip) throws SQLException;
-	
-	public abstract void updateEventLocation(int locID, String addr, String city, String state, String zip) throws SQLException;
-	
-	public abstract void deleteEventLocation(int locID) throws SQLException;
-	
 }

@@ -59,45 +59,4 @@ public class EventDaoImpl implements EventDao {
 		
 	}
 
-	//Method to insert address into EventLocation table.
-	@Override
-	public void addEventLocation(String addr, String city, String state, String zip) throws SQLException {
-		Connection conn = cf.getConnection();
-		String sql = "{ call inserteventlocation(?,?,?,?)";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setString(1, addr);
-		call.setString(2, city);
-		call.setString(3, state);
-		call.setString(4, zip);
-		call.execute();
-		System.out.println("Event location added.");
-	}
-
-	//Calls stored procedure to update event location.
-	@Override
-	public void updateEventLocation(int locID, String addr, String city, String state, String zip) throws SQLException {
-		Connection conn = cf.getConnection();
-		String sql = "{ call updateeventlocation(?,?,?,?,?)";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setInt(1, locID);
-		call.setString(2, addr);
-		call.setString(3, city);
-		call.setString(4, state);
-		call.setString(5, zip);
-		call.execute();
-		System.out.println("Event location updated.");
-		
-	}
-
-	//Calls stored procedure to remove event location.
-	@Override
-	public void deleteEventLocation(int locID) throws SQLException {
-		Connection conn = cf.getConnection();
-		String sql = "{ call deleteEventLocation(?)";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setInt(1, locID);
-		call.execute();
-		System.out.println("Event location removed.");
-	}
-
 }
