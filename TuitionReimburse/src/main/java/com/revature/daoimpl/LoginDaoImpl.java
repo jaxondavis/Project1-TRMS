@@ -64,12 +64,12 @@ public static ConnFactory cf = ConnFactory.getInstance();
 	{
 		// adds a new Login to the database
 		Connection conn = cf.getConnection();
-		String sql = "{ call insertLogin(?,?,?)";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setString(1, email);
-		call.setString(2, password);
-		call.setInt(3, employeeID);
-		call.execute();
+		String sql = "INSERT INTO LOGIN VALUES(?, ?, ?)";
+		PreparedStatement ps = conn.prepareCall(sql);
+		ps.setString(1, email);
+		ps.setString(2, password);
+		ps.setInt(3, employeeID);
+		ps.execute();
 		System.out.println("Insert sequence complete!");
 	}
 
@@ -78,13 +78,13 @@ public static ConnFactory cf = ConnFactory.getInstance();
 	{
 		// updates the Logins info in the database
 		Connection conn = cf.getConnection();
-		String sql = "{ call updateLogin(?,?,?,?)";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setInt(1, logID);
-		call.setString(2, email);
-		call.setString(3, password);
-		call.setInt(4, employeeID);
-		call.execute();
+		String sql = "UPDATE LOGIN SET EMAIL = ?, PASSWORD = ?, EMPLOYEEID = ? WHERE LOGINID = ?";
+		PreparedStatement ps = conn.prepareCall(sql);
+		ps.setString(1, email);
+		ps.setString(2, password);
+		ps.setInt(3, employeeID);
+		ps.setInt(4, logID);
+		ps.execute();
 		System.out.println("Update sequence complete!");
 	}
 
@@ -93,9 +93,9 @@ public static ConnFactory cf = ConnFactory.getInstance();
 	{
 		// deletes the Login associated with appID in the database
 		Connection conn = cf.getConnection();
-		String sql = "{ call deletelogin(?)";
-		CallableStatement call = conn.prepareCall(sql);
-		call.setInt(1, logID);
-		call.execute();
+		String sql = "DELETE FROM LOGIN WHERE LOGINID = ?";
+		PreparedStatement ps = conn.prepareCall(sql);
+		ps.setInt(1, logID);
+		ps.execute();
 	}
 }
