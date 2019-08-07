@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,16 @@ import com.revature.daoimpl.EmployeeDaoImpl;
  */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	//Creates request to access login page.
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		System.out.println("In doGet of LoginServlet");
+		//Use RequestDispatcher to present login page.
+		RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		rd.forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -24,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		request.getRequestDispatcher("index.html").include(request, response);
+		request.getRequestDispatcher("index.html").include(request, response); //Do we need this?
 		
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 		
@@ -54,6 +65,14 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		out.close();
+	}
+	
+	
+	//Updates login info to be passed to LoginDaoImpl.
+	//TODO: Complete implementation once DAO is completed.
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		System.out.println("In doPut of LoginServlet");
 	}
 
 }
