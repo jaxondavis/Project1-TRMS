@@ -10,18 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MyEmployeesServlet
- * Admin only. Should be read only.
+ * Servlet implementation class MyAccountApplicationCreateServlet
  */
-public class MyEmployeesServlet extends HttpServlet {
+public class MyAccountApplicationCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * If session isn't void, get session and all employees that report to user, directly or indirectly. Should pass through DAO.
+	 * Get current session & params if session isn't void.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In doGet of myEmployees.");
+		System.out.println("In doGet of Create Application.");
 		HttpSession session = null;
 		PrintWriter out = response.getWriter();
 		
@@ -35,9 +34,16 @@ public class MyEmployeesServlet extends HttpServlet {
 			session = request.getSession();
 			Integer emplID = (Integer)session.getAttribute("emplID");
 			out.write("Employee #" + emplID + ": ");
-			
-			//Start getting list of Employees. Should we have this as procedure/method in DaoImpl?
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 * Send submitted info to ApplicationDaoImpl to create/update row in DB. (Would this be done by setAttribute or getAttribute for session?
+	 */
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

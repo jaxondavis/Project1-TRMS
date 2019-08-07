@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MyEmployeesServlet
- * Admin only. Should be read only.
+ * Servlet implementation class MyEmployeesApplicationDeniedServlet
+ * Class for getting denied form & getting form for cause of status.
  */
-public class MyEmployeesServlet extends HttpServlet {
+public class MyEmployeesApplicationDeniedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private HttpSession session;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * If session isn't void, get session and all employees that report to user, directly or indirectly. Should pass through DAO.
+	 * Get status/session.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In doGet of myEmployees.");
-		HttpSession session = null;
+		System.out.println("In doGet of My Employee Application Denied.");
 		PrintWriter out = response.getWriter();
 		
 		if (request.getSession() == null)
@@ -35,9 +35,16 @@ public class MyEmployeesServlet extends HttpServlet {
 			session = request.getSession();
 			Integer emplID = (Integer)session.getAttribute("emplID");
 			out.write("Employee #" + emplID + ": ");
-			
-			//Start getting list of Employees. Should we have this as procedure/method in DaoImpl?
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * To submit reason for denial and post to DB (may just handle this via email.)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

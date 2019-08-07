@@ -1,6 +1,8 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ public class MyAccountApplicationIDServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = null;
+		PrintWriter out = response.getWriter();
 		int applicationID = 0;
 		
 		if (request.getSession() == null)
@@ -31,7 +34,7 @@ public class MyAccountApplicationIDServlet extends HttpServlet {
 		{
 			session = request.getSession();
 			Integer emplID = (Integer)session.getAttribute("emplID");
-			
+			out.write("Employee #" + emplID + ": ");
 		}
 	}
 

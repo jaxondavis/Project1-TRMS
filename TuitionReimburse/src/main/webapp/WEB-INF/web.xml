@@ -149,4 +149,34 @@
     <servlet-name>CurrentEventsServlet</servlet-name>
     <url-pattern>/currentEvents</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyAccountApplicationCreateServlet</display-name>
+    <servlet-name>MyAccountApplicationCreateServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountApplicationCreateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyAccountApplicationCreateServlet</servlet-name>
+    <url-pattern>/myAccount/applications/create</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesEmployeeIDServlet</display-name>
+    <servlet-name>MyEmployeesEmployeeIDServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesEmployeeIDServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesEmployeeIDServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees/applications/:employeeID</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MyEmployeesApplicationDeniedServlet</display-name>
+    <servlet-name>MyEmployeesApplicationDeniedServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyEmployeesApplicationDeniedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesApplicationDeniedServlet</servlet-name>
+    <url-pattern>/myAccount/myEmployees/applications/:applicationID/denied</url-pattern>
+  </servlet-mapping>
 </web-app>

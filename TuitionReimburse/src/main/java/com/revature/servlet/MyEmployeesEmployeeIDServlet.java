@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MyEmployeesApplicationEditServlet
- * Class for getting application info & sends info for needed edits/updates to employee.
+ * Servlet implementation class MyEmployeesEmployeeIDServlet
+ * Class for getting employee info/application, and determining whether to approve or deny application.
  */
-public class MyEmployeesApplicationEditServlet extends HttpServlet {
+public class MyEmployeesEmployeeIDServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession session;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Get session and application form.
+	 * Add employee info & application to response.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In doGet of My Employee Application Edit.");
+		System.out.println("In doGet of My Employee Applications.");
 		PrintWriter out = response.getWriter();
 		
 		if (request.getSession() == null)
@@ -39,12 +39,22 @@ public class MyEmployeesApplicationEditServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Sends email of necessary changes to user.
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 * Changes application status. If "deny", forwards to /deny path to input cause of denial.
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Query/update application status function. If statement for deny to pass along to deny.
+		String appStatus = "approved"; //Should be revised to read in from HTML after manipulation.
+		
+		
+		if (appStatus.equals("approved"))
+		{
+			
+		}
+		else if (appStatus.equals("denied"))
+		{
+			response.sendRedirect("/deny");
+		}
 	}
 
 }

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +55,11 @@ public class LoginServlet extends HttpServlet {
 		{
 			out.print("Welcome, " + name);
 			HttpSession session = request.getSession();
-			session.setAttribute("name", name);
+			
+	//		Cookie cookie = new Cookie("emplID", employeeID+""); //May not be needed if we're using session.
+	//		response.addCookie(cookie);
+			
+			session.setAttribute("name", name);			//Will these be necessary? Can we remove these and just use the cookie?
 			session.setAttribute("emplID", employeeID);
 			response.sendRedirect("/myAccount");
 		}
