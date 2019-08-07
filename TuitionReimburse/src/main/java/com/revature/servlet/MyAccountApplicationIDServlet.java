@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MyAccountApplicationIDServlet
@@ -14,10 +15,24 @@ public class MyAccountApplicationIDServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Gets session if valid, and redirects to new path (w/unique app ID)
+	 * TODO: Figure out how we're getting applicationID. Likely through query statement from ApplicationDaoImpl
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = null;
+		int applicationID = 0;
+		
+		if (request.getSession() == null)
+		{
+			System.out.println("Returning to login page.");
+			request.getRequestDispatcher("login.html").include(request, response);
+		}
+		else
+		{
+			session = request.getSession();
+			Integer emplID = (Integer)session.getAttribute("emplID");
+			
+		}
 	}
 
 	/**
