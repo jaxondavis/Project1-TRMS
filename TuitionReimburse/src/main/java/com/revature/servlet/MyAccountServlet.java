@@ -26,6 +26,8 @@ public class MyAccountServlet extends HttpServlet {
 		
 		HttpSession session = null;
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+	//	EmployeeHasTypeImpl ehti = new EmployeeHasTypeImpl();
+	//	EmployeeTypeImpl eti = new EmployeeTypeImpl();
 		Employee empl = null;
 		String emplType = null;
 		
@@ -46,14 +48,23 @@ public class MyAccountServlet extends HttpServlet {
 			}
 		}
 		
-		//Does check for employee/supervisor, branches path accordingly.
+		//Pass along employee vals to a PrintWriter(?)
+		
+		
+		//Get value from EmployeeHasType table. Can either use to call EmployeeType table to get String or just use typeID for if statements.
+	//	int typeID = ehti.getType(emplID);
+	//	emplType = eti.getType(typeID);
+		
+		//Does check for employee/supervisor. May be removed/reimplemented for checks for admin specific functions.
 		if (emplType == "employee")
 		{
-			
+			//Pass to employee landing page.
+			System.out.println("Redirecting to employee page.");
+			request.getRequestDispatcher("login.html").include(request, response);
 		}
 		else if (emplType == "benco" || emplType == "depthead" || emplType == "supervisor")
 		{
-			
+			//Pass to admin landing page.
 		}
 		else if (emplType == null)
 		{
