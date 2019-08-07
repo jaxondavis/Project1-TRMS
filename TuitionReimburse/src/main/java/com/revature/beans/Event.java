@@ -14,14 +14,13 @@ public class Event
 	private int locationID;
 	private int formatID;
 	private int typeID;
-	private int presID;
 	
 	public Event() 
 	{
 		
 	}
 
-	public Event(int eventID, String eventName, Date eventDate, Date eventTime, double eventCost, String eventDesc, int locationID, int formatID, int typeID, int presID) 
+	public Event(int eventID, String eventName, Date eventDate, Date eventTime, double eventCost, String eventDesc, int locationID, int formatID, int typeID) 
 	{
 		this.eventID = eventID;
 		this.eventName = eventName;
@@ -32,7 +31,6 @@ public class Event
 		this.locationID = locationID;
 		this.formatID = formatID;
 		this.typeID = typeID;
-		this.presID = presID;
 	}
 
 	public int getEventID() 
@@ -125,13 +123,4 @@ public class Event
 		this.typeID = typeID;
 	}
 
-	public int getPresID() 
-	{
-		return presID;
-	}
-
-	public void setPresID(int presID) 
-	{
-		this.presID = presID;
-	}
 }

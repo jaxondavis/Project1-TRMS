@@ -83,6 +83,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void updateEmployee(Employee emp, EmployeeHasType empT, Address add, Login log) throws SQLException 
 	{
+		//update core employee information
 		Connection conn = cf.getConnection();
 		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME = ?, BIRTHDATE = ?, REPORTSTO = ? WHERE EMPLOYEEID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -93,6 +94,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		ps.setInt(5, emp.getEmployeeID());
 		ResultSet rs = ps.executeQuery();
 		
+		//update the employees login info
 		sql = "UPDATE LOGIN SET EMAIL = ?, PASSWORD = ? WHERE EMPLOYEEID = ?";
 		ps = conn.prepareStatement(sql);
 		ps.setString(1, log.getEmail());
@@ -100,6 +102,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		ps.setInt(3, emp.getEmployeeID());
 		rs = ps.executeQuery();
 		
+		//update the employees address info
 		sql = "UPDATE ADDRESS SET ADDRESS = ?, CITY = ?, STATE = ?, ZIPCODE = ? WHERE EMPLOYEEID = ?";
 		ps = conn.prepareStatement(sql);
 		ps.setString(1, add.getAddress());
@@ -109,19 +112,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		ps.setInt(5, emp.getEmployeeID());
 		rs = ps.executeQuery();
 		
-		sql = "UPDATE ADDRESS SET ADDRESS = ?, CITY = ?, STATE = ?, ZIPCODE = ? WHERE EMPLOYEEID = ?";
-		ps = conn.prepareStatement(sql);
-		ps.setString(1, add.getAddress());
-		ps.setString(2, add.getCity());
-		ps.setString(3, add.getState());
-		ps.setString(4, add.getZipcode());
-		ps.setInt(5, emp.getEmployeeID());
-		rs = ps.executeQuery();
-		
+		//update the employees type
 		sql = "UPDATE EMPLOYEEHASTYPE SET TYPEID = ? WHERE EMPLOYEEID = ?";
 		ps = conn.prepareStatement(sql);
 		ps.setInt(1, empT.getTypeID());
 		ps.setInt(2, emp.getEmployeeID());
 		rs = ps.executeQuery();
+	}
+	
+	@Override
+	public void deleteEmployee(Employee emp) throws SQLException
+	{
+		//delete the employee based on the inputed employee id
+		Connection conn = cf.getConnection();
+		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, emp.getEmployeeID());
+		ResultSet rs = ps.executeQuery();
 	}
 }

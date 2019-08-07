@@ -17,4 +17,6 @@ public interface EmployeeDao {
 	public abstract int verifyPassword(String username, String password) throws SQLException;
 	
 	public abstract void updateEmployee(Employee emp, EmployeeHasType empT, Address add, Login log) throws SQLException;
+
+	public abstract void deleteEmployee(Employee emp) throws SQLException;
 }
