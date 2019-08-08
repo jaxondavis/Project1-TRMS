@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter();  
+		//PrintWriter out = response.getWriter();  
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			else {
 				response.setContentType("text/html");
-				out.print("<h3>Sorry UserName or Password Error!</h3>");  
+				//out.print("<h3>Sorry UserName or Password Error!</h3>");  
 		        RequestDispatcher rd=request.getRequestDispatcher("html/login.html");  
 		        rd.include(request, response);  
 			}

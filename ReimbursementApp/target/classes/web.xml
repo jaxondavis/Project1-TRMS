@@ -24,7 +24,7 @@
     <servlet-name>EventServlet</servlet-name>
     <url-pattern>/events</url-pattern>
   </servlet-mapping>
-  <servlet>
+   <servlet>
     <description></description>
     <display-name>MyAccountServlet</display-name>
     <servlet-name>MyAccountServlet</servlet-name>
@@ -34,6 +34,7 @@
     <servlet-name>MyAccountServlet</servlet-name>
     <url-pattern>/account</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>EditMyAccountServlet</display-name>
@@ -43,5 +44,67 @@
   <servlet-mapping>
     <servlet-name>EditMyAccountServlet</servlet-name>
     <url-pattern>/account/edit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>MyApplicationsServlet</display-name>
+    <servlet-name>MyApplicationsServlet</servlet-name>
+    <servlet-class>servlet.MyApplicationsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyApplicationsServlet</servlet-name>
+    <url-pattern>/account/applications</url-pattern>
+  </servlet-mapping>
+  <!--<servlet>
+    <description></description>
+    <display-name>MyApplicationServlet</display-name>
+    <servlet-name>MyApplicationServlet</servlet-name>
+    <servlet-class>servlet.MyApplicationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyApplicationServlet</servlet-name>
+    <url-pattern>/account/application/?appid=</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditMyApplicationServlet</display-name>
+    <servlet-name>EditMyApplicationServlet</servlet-name>
+    <servlet-class>servlet.EditMyApplicationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditMyApplicationServlet</servlet-name>
+    <url-pattern>/account/application/edit/?appid=</url-pattern>
+  </servlet-mapping>-->
+  <servlet>
+    <description></description>
+    <display-name>CreateApplicationServlet</display-name>
+    <servlet-name>CreateApplicationServlet</servlet-name>
+    <servlet-class>servlet.CreateApplicationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateApplicationServlet</servlet-name>
+    <url-pattern>/account/applications/create</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <!-- <display-name>MyEmployeesServlet</display-name> -->
+    <servlet-name>MyEmployeesServlet</servlet-name>
+    <servlet-class>servlet.MyEmployeesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyEmployeesServlet</servlet-name>
+    <url-pattern>/account/myemployees</url-pattern>
+  </servlet-mapping>
+ <servlet>
+    <description></description>
+    <!-- <display-name>EmployeeApplicationsServlet</display-name> -->
+    <servlet-name>EmployeesApplicationsServlet</servlet-name>
+    <servlet-class>servlet.EmployeesApplicationsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeesApplicationsServlet</servlet-name>
+    <url-pattern>/account/myemployees/applications</url-pattern>
   </servlet-mapping>
 </web-app>

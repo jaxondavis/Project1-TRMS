@@ -35,32 +35,32 @@ public class EditMyAccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		AddressDaoImpl adi = new AddressDaoImpl();
-		LoginDaoImpl ldi = new LoginDaoImpl();
+//		HttpSession session = request.getSession();
+//		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+//		AddressDaoImpl adi = new AddressDaoImpl();
+//		LoginDaoImpl ldi = new LoginDaoImpl();
+//
+//		Integer employeeid;
+//		String reportsTo;
+//		Address a;
+//		Employee e;
+//		String email;
+//
+//		if (session != null) {
 
-		Integer employeeid;
-		String reportsTo;
-		Address a;
-		Employee e;
-		String email;
-
-		if (session != null) {
-
-			employeeid = (Integer) session.getAttribute("employeeid");
-			e = edi.getEmployee(employeeid);
-			reportsTo = edi.getReportsTo(e.getReportsTo());
-			a = adi.getAddress(e.getAddressId());
-			email = ldi.getEmail(employeeid);
+//			employeeid = (Integer) session.getAttribute("employeeid");
+//			e = edi.getEmployee(employeeid);
+//			reportsTo = edi.getReportsTo(e.getReportsTo());
+//			a = adi.getAddress(e.getAddressId());
+//			email = ldi.getEmail(employeeid);
 
 			// send it as json
-			RequestDispatcher rd=request.getRequestDispatcher("html/editmyaccount.html");  
-	        rd.include(request, response);
+			RequestDispatcher rd=request.getRequestDispatcher("../html/editmyaccount.html");  
+	        rd.forward(request, response);
 
-		} else {
-			response.sendRedirect("/login");
-		}
+//		} else {
+//			response.sendRedirect("/login");
+//		}
 	}
 
 	/**
