@@ -1,0 +1,165 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #ccc;
+    
+}
+
+
+
+.button {
+    width:200px;
+    height:50px;
+    background-color:#0000f0;
+    font-size: 20px;
+    color:white; 
+    border-radius:12px;
+    border-width: 0;
+    
+}
+
+#page_container {
+    background-color: white;
+    width: 600px;
+    margin: 0 auto;
+    
+}
+
+#option_1_container {
+    width: 580px;
+    margin: 0 auto;
+    padding: 10px 0px;
+    
+    
+}
+
+#option_2_container {
+    width: 580px;
+    margin: 0 auto;
+   
+  
+}
+
+.button3 {
+    width:125px;
+    height:25px;
+    background-color:#0000f0;
+    font-size: 10px;
+    color:white; 
+    border-radius:12px;
+    border-width: 0;
+    margin: 5px;
+}
+
+#main_form_container {
+    width: 550px;
+    
+    
+}
+
+#input_center {
+    width:200px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+#button_center {
+    width:200px;
+    height: 150px; 
+    margin: 0 auto;
+}
+
+table, td, th {
+    padding:10px;
+    
+}
+
+
+textarea {
+    resize:none;
+    text-align: left;
+    width:300px;
+}
+
+#button_center1{
+    padding-top: 10px;
+    width:500px; 
+    margin: 0 auto;
+    
+}
+
+.grid {
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+    grid-template-areas: 
+        "empty empty empty logout_data";
+        "title_container title_container title_container title_container";
+    
+}
+
+.title_container {
+    text-align: center;
+    width:600px;
+    
+    grid-column: 1 /4;
+   
+    
+}
+
+
+.logout_data {
+    width: 200px;
+    
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "username  button2";
+        ;
+    
+    
+}
+
+
+.empty {
+    width: 400px;
+    
+}
+
+.username {
+   width:90px;
+    align-self:end;
+    
+}
+
+.username_input {
+    width: 70px;
+    border-width: 0px;
+   
+}
+
+.button_div {
+    width: 90px;
+    align-self: end;
+   
+    
+}
+
+.button2 {
+    width:90px;
+    
+    background-color:#000;
+    font-size: 20px;
+    color:white; 
+    
+    border-width: 0;
+}
+
