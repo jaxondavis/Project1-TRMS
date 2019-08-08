@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to TRMS</title>
-        <link rel="stylesheet" type="text/css" href="trms.css">
+        <meta charset="ISO-8859-1">
+        <title>Welcome</title>
+        <style type="text/css">
+            #welcome_text {
+                width: 400px;
+
+            }
+
+        </style>
     </head>
-    
     <body>
-    <div id="container_index">
-        <div id="form_container">
-            <div id="title_card">
-                <h1 class="new_h1">Tuition Reimbursement</h1>
-                <h1 class="new_h1" >Management System</h1>
-        </div>
-                <form id="form1" action="#" method="post">
-                    <div id="input_center">
-                    <input type="text" placeholder="username" name="username" class="input_style">
-                        <br><br>
-                    <input type="password" placeholder="password" name="password" class="input_style">
-                    <br>
-                    </div>
-                    <div id="button_center">
-                    <input type="submit" class="button" name="login_submit" value="Login">
-                    
-                    <br><br>
-                    <button class="button" name="register_submit">Register</button>
-                    </div>
-                </form>
+        <div class="content_wrapper1">
+            <div id="div1">
+            <form action="login" method="post">
+                <input type="submit" value="login" id="button1" name="submit1">
+            </form>
+            </div id="app_title_container">
+                <h1>Tuition Reimbursement Management System</h1>
+            </div>
+            <div id="bookcover">
+            <!--"welcome page info about company / image-->
+            </div>
+            <div id="welcome_text">
+                <!--dummy text - put "about company text here:-->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Vestibulum orci augue, posuere ut tortor at, mollis fringilla leo. 
+                    Maecenas imperdiet suscipit erat eu gravida. Etiam molestie consectetur massa eget tempus. 
+                    Fusce odio est, bibendum nec iaculis vitae, ornare a elit. Quisque volutpat eget massa sed 
+                    feugiat. Ut sagittis ac leo a vehicula. </p>
+            </div>
 
-            
         </div>
-    </div>
 
+    </body>
     <script type="text/javascript">
     
-        
+    
+    
     </script>
-    </body>
-
 </html>
