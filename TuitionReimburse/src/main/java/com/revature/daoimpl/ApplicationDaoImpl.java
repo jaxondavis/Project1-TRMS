@@ -57,6 +57,24 @@ public class ApplicationDaoImpl implements ApplicationDao
 		}
 		return list;
 	}
+	
+	@Override
+	public ArrayList<Application> getAllApplicationsFromEmployee(int empID) throws SQLException 
+	{
+		Application app = null;
+		ArrayList<Application> list = new ArrayList<Application>();
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM APPLICATION WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, empID);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			app = new Application(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getInt(7));
+			list.add(app);
+		}
+		return list;
+	}
 
 	@Override
 	public void addApplication(String just, int employeeID, int requestStatusID, int eventID, int gradeID, int presID) throws SQLException 

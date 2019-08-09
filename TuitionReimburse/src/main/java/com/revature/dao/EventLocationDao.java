@@ -16,4 +16,8 @@ public interface EventLocationDao
 	public abstract void updateEventLocation(int locID, String addr, String city, String state, String zip) throws SQLException;
 	
 	public abstract void deleteEventLocation(int locID) throws SQLException;
+
+	public abstract boolean checkLocation(int locID) throws SQLException;
+	
+	public abstract int getCurrentIndex() throws SQLException;
 }

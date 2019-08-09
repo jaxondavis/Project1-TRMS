@@ -48,7 +48,7 @@ public class EventLocationDaoImpl implements EventLocationDao
 		EventLocation loc = null;
 		ArrayList<EventLocation> list = new ArrayList<EventLocation>();
 		Connection conn = cf.getConnection();
-		String sql = "SELECT * FROM APPLICATION";
+		String sql = "SELECT * FROM EVENTLOCATION";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next())
@@ -59,7 +59,7 @@ public class EventLocationDaoImpl implements EventLocationDao
 		return list;
 	}
 	
-	//Method to insert address into EventLocation table.
+	//Method to insert event location into EventLocation table.
 	@Override
 	public void addEventLocation(String addr, String city, String state, String zip) throws SQLException 
 	{
@@ -92,12 +92,45 @@ public class EventLocationDaoImpl implements EventLocationDao
 
 	//Calls stored procedure to remove event location.
 	@Override
-	public void deleteEventLocation(int locID) throws SQLException {
+	public void deleteEventLocation(int locID) throws SQLException 
+	{
 		Connection conn = cf.getConnection();
 		String sql = "{ call deleteeventlocation(?)";
 		CallableStatement call = conn.prepareCall(sql);
 		call.setInt(1, locID);
 		call.execute();
 		System.out.println("Event location removed.");
+	}
+	
+	@Override
+	public boolean checkLocation(int locID) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM EVENTLOCATION";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			if(locID == rs.getInt(1))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public int getCurrentIndex() throws SQLException
+	{
+		int max = 1;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM EVENTLOCATION";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			max = rs.getInt(1);
+		}
+		return max;
 	}
 }

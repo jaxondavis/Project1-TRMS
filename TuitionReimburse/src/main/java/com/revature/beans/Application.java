@@ -100,7 +100,5 @@ public class Application
 	public void setGradeID(int gradeID) 
 	{
 		this.gradeID = gradeID;
-	}
-	
-	
+	}	
 }

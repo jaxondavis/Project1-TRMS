@@ -18,4 +18,6 @@ public interface EventDao
 			int locationID, int formatID, int typeID) throws SQLException;
 	
 	public abstract void deleteEvent(int eventID) throws SQLException;
+	
+	public abstract int getCurrentIndex() throws SQLException;
 }

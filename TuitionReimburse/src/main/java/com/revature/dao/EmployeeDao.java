@@ -8,10 +8,11 @@ import com.revature.beans.Employee;
 import com.revature.beans.EmployeeHasType;
 import com.revature.beans.Login;
 
-public interface EmployeeDao {
+public interface EmployeeDao 
+{
 
 	public abstract Employee getEmployee(int userID) throws SQLException;
-	
+
 	//public abstract void employeeReg(String first, String last, Date dob, int sup, String addr) throws SQLException;
 	
 	public abstract int verifyPassword(String username, String password) throws SQLException;

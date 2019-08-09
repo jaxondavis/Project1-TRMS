@@ -16,4 +16,6 @@ public interface AvailReimDao
 	public abstract void updateAvailReimbursement(int availID, double funds) throws SQLException;
 	
 	public abstract void deleteAvailReimbursement(int availID) throws SQLException;
+
+	public abstract int getCurrentIndex() throws SQLException;
 }

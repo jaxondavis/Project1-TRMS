@@ -101,4 +101,19 @@ public class EventDaoImpl implements EventDao {
 		call.setInt(1, eventID);
 		call.execute();
 	}
+	
+	@Override
+	public int getCurrentIndex() throws SQLException
+	{
+		int max = 1;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM EVENT";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			max = rs.getInt(1);
+		}
+		return max;
+	}
 }

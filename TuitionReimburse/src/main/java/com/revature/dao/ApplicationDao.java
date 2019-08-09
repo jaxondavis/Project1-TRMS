@@ -11,6 +11,8 @@ public interface ApplicationDao
 	
 	public abstract ArrayList<Application> getAllApplications() throws SQLException;
 	
+	public abstract ArrayList<Application> getAllApplicationsFromEmployee(int empID) throws SQLException ;
+	
 	public abstract void addApplication(String just, int employeeID, int requestStatusID, int eventID, int gradeID, int presID) throws SQLException;
 	
 	public abstract void updateApplication(int appID, String just, int employeeID, int requestStatus, int eventID, int gradeID, int presID) throws SQLException;

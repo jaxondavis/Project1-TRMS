@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.revature.beans.AvailableReimbursement;
+import com.revature.beans.Employee;
 import com.revature.dao.AvailReimDao;
 import com.revature.util.ConnFactory;
 
@@ -56,6 +57,33 @@ public class AvailReimDaoImpl implements AvailReimDao
 		return list;
 	}
 	
+	public AvailableReimbursement getAvailReimbursementFromEmployee(int empID) throws SQLException
+	{
+		AvailableReimbursement avail = null;
+		Connection conn = cf.getConnection();
+		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
+		Employee e = empDao.getEmployee(empID);
+		String sql = "SELECT * FROM AvailableReimbursement WHERE AvailableReimbursementID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, e.getAvailReimbID());
+		ResultSet rs = ps.executeQuery();
+		if (rs.equals(null))
+		{
+			System.out.println("Couldn't find AvailableReimbursement matching id "+e.getAvailReimbID());
+		}
+		else
+		{
+			while (rs.next())
+			{
+				if(rs.getInt(1) == e.getAvailReimbID())
+				{
+					avail = new AvailableReimbursement(rs.getInt(1), rs.getDouble(2));
+				}
+			}
+		}
+		return avail;
+	}
+	
 	public void addAvailReimbursement(double funds) throws SQLException
 	{
 		// adds a new AvailableReimbursement to the database
@@ -87,5 +115,20 @@ public class AvailReimDaoImpl implements AvailReimDao
 		CallableStatement call = conn.prepareCall(sql);
 		call.setInt(1, availID);
 		call.execute();
+	}
+	
+	@Override
+	public int getCurrentIndex() throws SQLException
+	{
+		int max = 1;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM AvailableReimbursement";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			max = rs.getInt(1);
+		}
+		return max;
 	}
 }

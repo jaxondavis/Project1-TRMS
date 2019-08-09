@@ -101,4 +101,11 @@ public class Employee {
 	{
 		this.availReimbID = availReimbID;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeID=" + employeeID + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", birthdate=" + birthdate + ", reportsTo=" + reportsTo + ", addressID=" + addressID
+				+ ", availReimbID=" + availReimbID + "]";
+	}
 }
