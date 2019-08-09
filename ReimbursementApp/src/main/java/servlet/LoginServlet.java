@@ -59,16 +59,11 @@ public class LoginServlet extends HttpServlet {
 		Integer typeid = 0;
 		String name = "";
 		String employeetype = "";
-		//try {
-			//employeeid = ldi.checkLogin(email, password);
+		try {
+			employeeid = ldi.checkLogin(email, password);
 			if (employeeid > 0 && employeeid != null) {
-				//session.setAttribute("employeeid", employeeid);
-				//name = edi.getName(employeeid);
-				//session.setAttribute("name", name);
-				//typeid = edi.getTypeId(employeeid);
-				//employeetype = etdi.getType(typeid);
-				//session.setAttribute("employeetype", employeetype);
-				response.sendRedirect("account");
+				session.setAttribute("employeeid", employeeid);
+				response.sendRedirect("/account");
 			}
 			else {
 				response.setContentType("text/html");
@@ -76,8 +71,8 @@ public class LoginServlet extends HttpServlet {
 		        RequestDispatcher rd=request.getRequestDispatcher("html/login.html");  
 		        rd.include(request, response);  
 			}
-		//} catch (SQLException e) {
+		} catch (SQLException e) {
 			//e.printStackTrace();
-		//}
+		}
 	}
 }
