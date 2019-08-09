@@ -3,35 +3,69 @@
     <head>
         <title>Edit My Account</title>
         <meta charset="ISO-8859-1">
+        <link rel="stylesheet" type="text/css" href="style/main.css">
+        <link rel="stylesheet" type="text/css" href="style/employee_account.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
     
     </head>
     <body>
-        <div>
-            <div class="content_wrapper">
-                <div><h4>Tutition Reinbursement Management System</h4></div>
-            <div id="table_wrapper">
-                <div>Edit Your Account Data</div> 
-    <table>
+        <div class="top_content">
+            <div class="title_div">
+                <h4>Tutition Reinbursement Management System</h4>
+            </div>
+        <div class="logout_div">
+            <input type="submit" class="button1" name="logout" value="LOGOUT">
+        </div>
+
+        <div class="navbar">
+            <nav>
+            
+                    <a href="edit_account.html">
+                    My Account</a> | 
+                
+                    <a href="applications.html">
+                    Applications </a>|
+        
+                    <a href="current_events.html">
+                    Current Events</a> 
+
+            </nav>
+        </div>
+        </div>
+        
+         <div class="content_wrapper">
+
+            
+
+          <div id="info_container">
+                <div>
+                    <h3>Edit My Account Information</h3>
+                </div>
+    
         <form>
-        <tr>
-            <td>
+            <div class="employee_div_space">
                 First Name: <input type="text" name=fname placeholder="Enter First Name">
-            </td>
-            <td>
+            </div> 
+            <div class="employee_div_space">
                 Last Name: <input type="text" name=lname placeholder="Enter Last Name">
-            </td>
-            <td>
+            </div>
+            <div class="employee_div_space">
                 Birthdate: <input type="text" name=lname placeholder="Enter Birthdate">
-            </td>
-        </tr>
-        <tr>
-            <td>
+            </div>
+           <div class="employee_div_space">
                 Address: <input type="text" name="address" placeholder="Enter Street Addres">
-            </td>
-            <td>
+         </div>
+           <div class="employee_div_space">
                 City: <input type="text" name="city" placeholder="Enter City">
-            </td>
-            <td>
+            
                 State: 
                 <select> 
                     <option value="AL">AL</option>
@@ -90,31 +124,26 @@
                     <option value="WI">WI</option>
                     <option value="WY">WY</option>  
                 </select>
-                &nbsp; &nbsp;
-                
+            </div> 
+               <div class="employee_div_space">
                     Zip Code: <input type="text" name="zip" placeholder="Enter zip" maxlength="5">
-            </td>
-        </tr>
-        <tr>
-            <td>
-               Reports to:  <input type="text" name="reports2" readonly value="supervisor">
-            </td>
-            <td>
+               </div>
+          <div class="employee_div_space">
+               Reports to:  <input type="text" name="reports2"  value="supervisor">
+        </div>
+           <div class="employee_div_space">
                 Change Username: <input type="text" name="username" placeholder="Enter New Username">
-            </td>
-            <td>
-                Change Password: <input type="password" name="password" placeholder="Enter New Password">
-            </td>
-            
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" name="submit" class="submit1" value="Submit New Information">
-            </td>
-        </tr>
-    </form>
-    </table>
             </div>
+            <div class="employee_div_space">
+                Change Password: <input type="password" name="password" placeholder="Enter New Password">
+           </div>
+            <div class="employee_div_space">
+                <input type="submit" name="submit" class="button1" value="Submit New Information">
+           </div>
+    </form>
+    
+            </div>
+             
         </div>
     </body>
 
