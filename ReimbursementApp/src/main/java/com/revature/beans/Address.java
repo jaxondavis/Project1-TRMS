@@ -23,7 +23,7 @@ public class Address {
 		this.address = address;
 		this.city = city;
 		this.state = state;
-		ZIP = zIP;
+		this.ZIP = zIP;
 	}
 	
 	public Address(Object[] attr) {

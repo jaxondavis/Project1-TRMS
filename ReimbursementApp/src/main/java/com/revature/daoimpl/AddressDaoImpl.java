@@ -53,8 +53,18 @@ public class AddressDaoImpl {
 	
 	
 	public Address getAddress(int addressId) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM ADDRESS WHERE ADDRESSID = ?";
+		Address address = null;
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, addressId);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			//ResultSet columns start at 1.
+			address = new Address(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+		}
+		return address;
 	}
 	
 	public int confirmAddress(String addr, String city, String state, String zip) throws SQLException {
@@ -96,5 +106,6 @@ public class AddressDaoImpl {
 		call.execute();
 		System.out.println("Sequence complete!");
 	}
+	
 	
 }

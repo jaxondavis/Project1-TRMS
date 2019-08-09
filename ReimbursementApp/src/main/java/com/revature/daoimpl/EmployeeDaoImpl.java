@@ -3,10 +3,13 @@
  */
 package com.revature.daoimpl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.beans.Employee;
 import com.revature.util.ConnFactory;
@@ -73,6 +76,36 @@ public class EmployeeDaoImpl {
 		}
 		
 		return employeeName;
+	}
+	
+	//Uses stored procedure to delete employee from table.
+	public void deleteEmployee(Integer employeeID) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		String sql = "{ call deleteemployee(?)";
+		CallableStatement call = conn.prepareCall(sql);
+		call.setInt(1, employeeID);
+		call.execute();
+		System.out.println("Employee has been DELETED! YEEEEEEEEAAAASSSSSSSSS.");
+	}
+	
+	//Returns list of employees that report to a given user. Will need to access ReportsTo table. Check into this.
+	public List<Employee> viewEmployeesReportingTo(Integer reportsTo) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		ArrayList<Employee> employeeList = new ArrayList<Employee>();
+		String sql = "SELECT * FROM EMPLOYEE WHERE REPORTSTO = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, reportsTo);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			//Don't understand why this is throwing an error. It matches the args for the constructor...
+			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),
+					rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+			employeeList.add(employee);
+		}
+		return employeeList;
 	}
 
 }
