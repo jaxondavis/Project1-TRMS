@@ -40,17 +40,11 @@ public class ConnFactory {
 				Connection conn = null;
 				Properties prop = new Properties();
 				//TryCatch for literally everything. :D
-				try {
-					prop.load(new FileReader("database.properties"));
-					Class.forName(prop.getProperty("driver"));
-					conn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("user"), prop.getProperty("password"));
+				try { //http://localhost:8080/TuitionReimburse/home
+					//prop.load(new FileReader("/TuitionReimburse/src/main/webapp/WEB-INF/lib/database.properties"));
+					Class.forName("oracle.jdbc.OracleDriver");
+					conn = DriverManager.getConnection("jdbc:oracle:thin:@pega1907.cunaco3hss3c.us-east-1.rds.amazonaws.com:1521:ORCL", "reimbursementdb", "p4ssw0rd");
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {
@@ -60,8 +54,4 @@ public class ConnFactory {
 				
 				return conn;
 			}
-
-		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-		}
 }

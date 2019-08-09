@@ -36,30 +36,29 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		request.getRequestDispatcher("index.html").include(request, response); //Do we need this?
-		
+		//request.getRequestDispatcher("index.html").include(request, response); //Do we need this?
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 		
-		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		//Check against DaoImpl here. User/PW combo. Verification in EmployeeDaoImpl.
 		int employeeID = 0;
 		try {
-			employeeID = edi.verifyPassword(name, password);
+			employeeID = edi.verifyPassword(email, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (employeeID > 0)
 		{
-			out.print("Welcome, " + name);
+			out.print("Welcome, " + email);
 			HttpSession session = request.getSession();
 			
 	//		Cookie cookie = new Cookie("emplID", employeeID+""); //May not be needed if we're using session.
 	//		response.addCookie(cookie);
 			
-			session.setAttribute("name", name);			//Will these be necessary? Can we remove these and just use the cookie?
+			session.setAttribute("name", email);			//Will these be necessary? Can we remove these and just use the cookie?
 			session.setAttribute("emplID", employeeID);
 			response.sendRedirect("/myAccount");
 		}
