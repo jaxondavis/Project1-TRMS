@@ -146,4 +146,13 @@ public class Event {
 	public void setTypeId(int typeId) {
 		this.typeId = typeId;
 	}
+
+	@Override
+	public String toString() {
+		return "Event [eventName=" + eventName + ", eventDate=" + eventDate + ", eventTime=" + eventTime
+				+ ", eventCost=" + eventCost + ", eventDesc=" + eventDesc + ", locationID=" + locationID + ", formatID="
+				+ formatID + ", typeId=" + typeId + "]";
+	}
+	
+	
 }

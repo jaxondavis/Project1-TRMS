@@ -24,17 +24,35 @@ public class EmployeeDaoImpl {
 	
 	//TODO: create update method to utilize the procedure
 	public String getName(Integer employeeid) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = cf.getConnection();
+		String name = null;
+		String sql = "SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, employeeid);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			name = rs.getString(1) + " " + rs.getString(2);
+		}
+		return name;
 	}
 
 	public Integer getTypeId(Integer employeeid) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = cf.getConnection();
+		Integer typeID = 0;
+		String sql = "SELECT TYPEID FROM EMPLOYEEHASTYPE WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, employeeid);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			typeID = rs.getInt(1);
+		}
+		return typeID;
 	}
 
 	public Employee getEmployee(Integer employeeid) throws SQLException {
-		Employee empl = null;
+		Employee employee = null;
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEEID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -48,12 +66,12 @@ public class EmployeeDaoImpl {
 		{
 			while (rs.next())
 			{
-				//ResultSet columns start at 1.
-				//empl = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
+				employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
+				rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
 			}
 		}
 		
-		return empl;
+		return employee;
 	}
 
 	public String getReportsTo(int reportsTo) throws SQLException {
@@ -101,8 +119,8 @@ public class EmployeeDaoImpl {
 		while (rs.next())
 		{
 			//Don't understand why this is throwing an error. It matches the args for the constructor...
-			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),
-					rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
+					rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
 			employeeList.add(employee);
 		}
 		return employeeList;

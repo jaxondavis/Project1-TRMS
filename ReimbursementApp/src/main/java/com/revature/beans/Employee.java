@@ -196,6 +196,16 @@ public class Employee {
 	public void setAvailReimbID(int availReimbID) {
 		this.availReimbID = availReimbID;
 	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeID=" + employeeID + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", birthdate=" + birthdate + ", reportsTo=" + reportsTo + ", email=" + email + ", username="
+				+ username + ", password=" + password + ", emplTypeID=" + emplTypeID + ", addressID=" + addressID
+				+ ", availReimbID=" + availReimbID + "]";
+	}
+	
+	
 	
 	
 }
