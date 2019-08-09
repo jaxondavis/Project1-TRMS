@@ -71,47 +71,4 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return empl;
 	}
 
-	
-	
-	
-	//Inserts an employee into the Employee DB table.
-	@Override
-	public void employeeReg(String first, String last, String dob, String sup, String addr) throws SQLException {
-		Connection conn = cf.getConnection();
-		//Query Statement to get Supervisor's Employee ID. May skip this and have registration form return supervisor's ID instead of name. Not sure.
-		
-		//Queries Address table, and if address doesn't exist, inserts new row then adds addressID to employee.
-				int addrID = 0;
-				String address = null;
-				String addrChk = "SELECT * FROM ADDRESS WHERE ADDRESS = ?";
-				PreparedStatement addrChkPs = conn.prepareStatement(addrChk);
-				addrChkPs.setString(1, addr);
-				ResultSet rsAddr = addrChkPs.executeQuery();
-				while (rsAddr.next())
-				{
-					addrID = rsAddr.getInt(1);
-					address = rsAddr.getString(2);
-				}
-				if (address.equals(addr))
-				{
-					//KEEP addrID value.
-				}
-				else
-				{
-					//INSERT INTO ADDRESS VALUES, then get new addrID;
-				}
-		
-		//INSERT Statement - Should first check and see if 
-		String sql = "INSERT INTO EMPLOYEE VALUES (FIRSTNAME = ?, LASTNAME = ?, BIRTHDATE = ?, ADDRESSID = ?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, first);
-		ps.setString(2, last);
-		ps.setDate(3, dob);
-		ps.setInt(4, addrID);
-		ResultSet rs = ps.executeQuery();
-		System.out.println("Employee created successfully.");
-		
-		
-	}
-
 }

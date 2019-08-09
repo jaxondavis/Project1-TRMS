@@ -13,17 +13,16 @@ import com.revature.beans.Employee;
 import com.revature.daoimpl.EmployeeDaoImpl;
 
 /**
- * Servlet implementation class MyAccountServlet
+ * Servlet implementation class MyAccountEditServlet
  */
-public class MyAccountServlet extends HttpServlet {
+public class MyAccountEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Gets current session. If session's void, returns to login. Otherwise return employee info depending on whether employee or supervisor.
+	 * Checks to confirm session isn't void, then gets current session.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = null;
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
 	//	EmployeeHasTypeImpl ehti = new EmployeeHasTypeImpl();
@@ -47,30 +46,16 @@ public class MyAccountServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		//Pass along employee vals to a PrintWriter(?)
-		
-		
-		//Get value from EmployeeHasType table. Can either use to call EmployeeType table to get String or just use typeID for if statements.
-	//	int typeID = ehti.getType(emplID);
-	//	emplType = eti.getType(typeID);
-		
-		//Does check for employee/supervisor. May be removed/reimplemented for checks for admin specific functions.
-		if (emplType == "employee")
-		{
-			//Pass to employee landing page.
-			System.out.println("Redirecting to employee page.");
-			request.getRequestDispatcher("login.html").include(request, response);
-		}
-		else if (emplType == "benco" || emplType == "depthead" || emplType == "supervisor")
-		{
-			//Pass to admin landing page.
-		}
-		else if (emplType == null)
-		{
-			System.out.println("Something went wrong, let's try again.");
-			request.getRequestDispatcher("login.html").include(request, response);
-		}
 	}
-	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Sends all info to the appropriate DAO implementation (EmployeeDaoImpl?)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+		//TODO: How am I getting the values from the form?
+		doGet(request, response);
+	}
+
 }
