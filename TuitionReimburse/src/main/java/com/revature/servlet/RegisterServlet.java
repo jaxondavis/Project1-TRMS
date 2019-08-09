@@ -48,15 +48,17 @@ public class RegisterServlet extends HttpServlet {
 		String first = request.getParameter("firstname");
 		String last = request.getParameter("password");
 		String dob = request.getParameter("birthdate");
-		int supervisor = request.getParameter("reportsTo");
+		int supervisor = Integer.parseInt(request.getParameter("reportsTo"));
 		String address = request.getParameter("address");
 		
-		try {
-			edi.insertEmployee(first, last, dob, supervisor, address);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try 
+//		{
+//			edi.insertEmployee(first, last, dob, supervisor, address);
+//		} 
+//		catch (SQLException e) 
+//		{
+//			e.printStackTrace();
+//		}
 		
 		out.print("Sorry, username or password error.");
 		request.getRequestDispatcher("login.html").include(request, response);

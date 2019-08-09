@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.revature.dao.Presentation;
+import com.revature.beans.Presentation;
 import com.revature.dao.PresentationDao;
 import com.revature.util.ConnFactory;
 
@@ -56,6 +56,18 @@ public class PresentationDaoImpl implements PresentationDao {
 		return pres;
 	}
 	
-	
-
+	@Override
+	public int getCurrentIndex() throws SQLException
+	{
+		int max = 1;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM PRESENTATIONS";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			max = rs.getInt(1);
+		}
+		return max;
+	}
 }

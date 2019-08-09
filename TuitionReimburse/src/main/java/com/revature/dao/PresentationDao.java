@@ -2,6 +2,8 @@ package com.revature.dao;
 
 import java.sql.SQLException;
 
+import com.revature.beans.Presentation;
+
 public interface PresentationDao {
 	
 	public abstract Presentation getPresentation(int presID) throws SQLException;
@@ -12,4 +14,5 @@ public interface PresentationDao {
 	
 	public abstract void removePresentation(int presID) throws SQLException;
 	
+	public abstract int getCurrentIndex() throws SQLException;
 }

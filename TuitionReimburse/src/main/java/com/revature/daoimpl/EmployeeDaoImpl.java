@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.revature.beans.Address;
 import com.revature.beans.Employee;
+import com.revature.beans.EmployeeHasType;
+import com.revature.beans.Login;
 import com.revature.dao.EmployeeDao;
 import com.revature.util.ConnFactory;
 
@@ -16,7 +19,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	//Confirms that username/password match in EmployeeLogin table, then use userID to get Employee.
 	//PARAMS: username, password - ideally from LoginServlet
 	@Override
-	public int verifyPassword(String username, String password) throws SQLException {
+	public int verifyPassword(String username, String password) throws SQLException 
+	{
 		Connection conn = cf.getConnection();
 		//Statement - compiles on SQL side. Generally terrible. Allows for SQL Injection. Headaches. DON'T DO IT.
 		String sql = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = ?";
@@ -43,12 +47,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			}
 			return employeeID;
 		}
-		else return 0;
+		else
+		{
+			return 0;
+		}
 	}
 
 	//Will likely remove due to security risk w/Employee class. Returns an Employee object.
 	@Override
-	public Employee getEmployee(int userID) throws SQLException {
+	public Employee getEmployee(int userID) throws SQLException 
+	{
 		Employee empl = null;
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEEID = ?";
@@ -63,12 +71,64 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		{
 			while (rs.next())
 			{
-				//ResultSet columns start at 1.
-				//empl = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
+				if(rs.getInt(1) == userID)
+				{
+					empl = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),rs.getInt(6),rs.getInt(7));
+				}
 			}
 		}
-		
 		return empl;
+	}
+
+	@Override
+	public void updateEmployee(Employee emp, EmployeeHasType empT, Address add, Login log) throws SQLException 
+	{
+		//update core employee information
+		Connection conn = cf.getConnection();
+		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME = ?, BIRTHDATE = ?, REPORTSTO = ? WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, emp.getFirstname());
+		ps.setString(2, emp.getLastname());
+		ps.setDate(3, emp.getBirthdate());
+		ps.setInt(4, emp.getReportsTo());
+		ps.setInt(5, emp.getEmployeeID());
+		ResultSet rs = ps.executeQuery();
+		
+		//update the employees login info
+		sql = "UPDATE LOGIN SET EMAIL = ?, PASSWORD = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, log.getEmail());
+		ps.setString(2, log.getPassword());
+		ps.setInt(3, emp.getEmployeeID());
+		rs = ps.executeQuery();
+		
+		//update the employees address info
+		sql = "UPDATE ADDRESS SET ADDRESS = ?, CITY = ?, STATE = ?, ZIPCODE = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, add.getAddress());
+		ps.setString(2, add.getCity());
+		ps.setString(3, add.getState());
+		ps.setString(4, add.getZipcode());
+		ps.setInt(5, emp.getEmployeeID());
+		rs = ps.executeQuery();
+		
+		//update the employees type
+		sql = "UPDATE EMPLOYEEHASTYPE SET TYPEID = ? WHERE EMPLOYEEID = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setInt(1, empT.getTypeID());
+		ps.setInt(2, emp.getEmployeeID());
+		rs = ps.executeQuery();
+	}
+	
+	@Override
+	public void deleteEmployee(Employee emp) throws SQLException
+	{
+		//delete the employee based on the inputed employee id
+		Connection conn = cf.getConnection();
+		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, emp.getEmployeeID());
+		ResultSet rs = ps.executeQuery();
 	}
 
 }
