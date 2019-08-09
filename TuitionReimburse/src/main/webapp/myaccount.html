@@ -2,58 +2,80 @@
 
 <html>
     <head>
-        <title>My Account</title>
         <meta charset="ISO-8859-1">
-    
+        <title>My Employees</title>
+        
+        <link rel="stylesheet" type="text/css" href="style/main.css">
+        <link rel="stylesheet" type="text/css" href="style/employee_account.css">
     </head>
-    <body>
-            <div><h4>Tutition Reinbursement Management System</h4></div>
-            <div class="content_wrapper">
-            <div class="navbar">
-                <nav>
-                
-                        <a href="applications.html">
-                        Applications </a>|
-            
-                    
-                        <a href="edit.html">
-                        Edit My Account</a> | 
-                
-                    
-                        <a href="currentEvents.html">
-                        Current Events</a> | 
-
-                </nav>
-
+    <body>  
+        <div class="top_content">
+            <div class="title_div">
+                <h4>Tutition Reinbursement Management System</h4>
             </div>
+        <div class="logout_div">
+            <input type="submit" class="button1" name="logout" value="LOGOUT">
+        </div>
+
+        <div class="navbar">
+            <nav>
+            
+                    <a href="edit_account.html">
+                    My Account</a> | 
+                
+                    <a href="applications.html">
+                    Applications </a>|
+        
+                    <a href="current_events.html">
+                    Current Events</a> 
+
+            </nav>
+        </div>
+        </div>
+
+            <div class="content_wrapper">
+
+            
+
 <div id="info_container">
-<table>
-    <tr>
-        <td>First Name: <span id="fname"></span>  
-        </td>
-        <td>Last Name: <span id="lname"></span>  
-        </td>
-        <td>Birthdate: <span id="bdate"></span>  
-        </td>
-    </tr><tr>
-        <td>Reports To: <span id="reports2"></span>  
-        </td>
-        <td>Employee Type <span id="emp_type"></span>  
-        </td>
-        <td>Address: <span id="address"></span>  
-        </td>
-    </tr><tr>
-        <td>State: <span id="state"></span>  
-        </td>
-        <td>Zip Code: <span id="zip"></span>  
-        </td>
-    <td></td></tr>
-          
-</table>               
+    <div>
+        <h3>My Account</h3>
+    </div>
+    <div id="account_info">
+        <!--insert employee information -->
+    </div>
+    
 </div>
 
+    <div class="employee_div_space">
+        First Name: <span id="fname" class="employee_div_color"></span>  
+    </div>
+    <div class="employee_div_space">
+        Last Name: <span id="lname" class="employee_div_color"></span>
+    </div>
+    <div class="employee_div_space">    
+        Birthdate: <span id="bdate" class="employee_div_color"></span>  
+    </div>    
+    <div class="employee_div_space">
+        Reports To: <span id="reports2" class="employee_div_color"></span> 
+    </div>
+     <div class="employee_div_space">   
+        Employee Type: <span id="emp_type" class="employee_div_color"></span>  
+    </div>
+     <div class="employee_div_space">   
+        Address: <span id="address" class="employee_div_color"></span>  
+      </div>  
+    <div class="employee_div_space">
+        State: <span id="state" class="employee_div_color"></span>  
+    </div>
+    <div class="employee_div_space">  
+        Zip Code: <span id="zip" class="employee_div_color"></span>  
+    </div> 
+    <div>
+        <input type="submit" class="button1" value="Click Here to Edit">           
+    </div>
         </div>
-    
+
     </body>
     <script type="text/javascript">
     
