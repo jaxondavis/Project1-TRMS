@@ -65,6 +65,10 @@ public class EditMyAccountServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 * 
+	 * 	This is gonna be crazy elaborate for the time frame. We'd need individual if statements for each DAO to check for every individual column,
+	 *	some which are foreign keys to other tables. I don't believe we have enough time for this, and recommend we delay until high priority tasks
+	 *	are complete.
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -76,6 +80,9 @@ public class EditMyAccountServlet extends HttpServlet {
 		Integer employeeid;
 		if (session != null) {
 			employeeid = (Integer) session.getAttribute("employeeid");
+			String column = null; //session.getAttribute("columnName");
+			String newVal = null; //session.getAttribute("newValue");
+			
 			//variable = request.getParameter("") till we have all from from
 			//can't auto turn into obj because putting info into multiple tables
 			//call respective dao put methods to send updates to each table
