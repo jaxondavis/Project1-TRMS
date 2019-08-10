@@ -133,4 +133,22 @@ public class EventLocationDaoImpl implements EventLocationDao
 		}
 		return max;
 	}
+	
+	public int confirmEventLocation(String addr, String city, String state, String zip) throws SQLException {
+		int locationID = 0;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT LOCATIONID FROM EVENTLOCATION WHERE LOCATION = ?, CITY = ?, STATE = ?, ZIPCODE = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, addr);
+		ps.setString(2, city);
+		ps.setString(3, state);
+		ps.setString(4, zip);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			//ResultSet columns start at 1.
+			locationID = rs.getInt(1);
+		}
+		return locationID;
+	}
 }

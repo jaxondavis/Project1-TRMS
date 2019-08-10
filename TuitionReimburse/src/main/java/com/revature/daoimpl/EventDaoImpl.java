@@ -115,4 +115,19 @@ public class EventDaoImpl implements EventDao {
 		}
 		return max;
 	}
+	
+	public Integer getEventID(String eventName) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		Integer eventID = 0;
+		String sql = "SELECT EVENTID FROM EVENT WHERE EVENTNAME = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, eventName);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			eventID = rs.getInt(1);
+		}
+		return eventID;
+	}
 }

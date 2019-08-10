@@ -38,5 +38,21 @@ public class EventTypeDaoImpl implements EventTypeDao
 		}
 		return type;
 	}
+	
+	public Integer getTypeID(String eventType) throws SQLException
+	{
+		int typeID = 0;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT TYPEID FROM EVENTTYPE WHERE TYPE = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, eventType);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			//ResultSet columns start at 1.
+			typeID = rs.getInt(1);
+		}
+		return typeID;
+	}
 
 }
