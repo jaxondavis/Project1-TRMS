@@ -31,9 +31,8 @@ public class LoadAccountServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		
 		HttpSession session = null;
 		AddressDaoImpl adi = new AddressDaoImpl();
@@ -54,15 +53,17 @@ public class LoadAccountServlet extends HttpServlet {
 		else
 		{
 			session = request.getSession();
-			//Integer emplID = (Integer)session.getAttribute("emplID");
-			Integer emplID = 1;
-			try {
+			Integer emplID = (Integer)session.getAttribute("emplID");
+			//Integer emplID = 1;
+			try 
+			{
 				empl = edi.getEmployee(emplID);
 				add = adi.getAddress(empl.getAddressID());
 				empType.setTypeID(ehti.getTypeID(emplID));
 				log = ldi.getLoginFromEmployee(emplID);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} 
+			catch (SQLException e) 
+			{
 				e.printStackTrace();
 			}
 		}
@@ -93,20 +94,14 @@ public class LoadAccountServlet extends HttpServlet {
 		employeeJSON.addProperty("state", add.getState());
 		employeeJSON.addProperty("zipcode", add.getZipcode());
 		employeeJSON.addProperty("birthdate", empl.getBirthdate().toString());
-		try {
+		try 
+		{
 			employeeJSON.addProperty("reportsto", edi.getName(empl.getReportsTo()));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
-		//Pass along employee vals to a PrintWriter(?)
-		System.out.println(employeeJSON.toString());
-		
-		//response.setContentType("text/html");
-		
-		ObjectMapper mapper = new ObjectMapper();
-		MyAccountJSON jsonThing = new MyAccountJSON(empl, add, log, empType);
-		String jsonString = mapper.writeValueAsString(jsonThing);
 
 		PrintWriter pw = response.getWriter();
 		response.setContentType("application/json");

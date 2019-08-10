@@ -53,8 +53,7 @@ public class MyAccountServlet extends HttpServlet {
 		else
 		{
 			session = request.getSession();
-			//Integer emplID = (Integer)session.getAttribute("emplID");
-			Integer emplID = 1;
+			Integer emplID = (Integer)session.getAttribute("emplID");
 			try {
 				empl = edi.getEmployee(emplID);
 				add = adi.getAddress(empl.getAddressID());
@@ -103,9 +102,9 @@ public class MyAccountServlet extends HttpServlet {
 		
 		//response.setContentType("text/html");
 		
-		ObjectMapper mapper = new ObjectMapper();
-		MyAccountJSON jsonThing = new MyAccountJSON(empl, add, log, empType);
-		String jsonString = mapper.writeValueAsString(jsonThing);
+		//ObjectMapper mapper = new ObjectMapper();
+		//MyAccountJSON jsonThing = new MyAccountJSON(empl, add, log, empType);
+		//String jsonString = mapper.writeValueAsString(jsonThing);
 
 		PrintWriter pw = response.getWriter();
 		//response.setContentType("application/json");
