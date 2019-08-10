@@ -2,14 +2,11 @@ package com.revature.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.revature.daoimpl.EmployeeDaoImpl;
 
@@ -48,15 +45,17 @@ public class RegisterServlet extends HttpServlet {
 		String first = request.getParameter("firstname");
 		String last = request.getParameter("password");
 		String dob = request.getParameter("birthdate");
-		int supervisor = request.getParameter("reportsTo");
+		int supervisor = Integer.parseInt(request.getParameter("reportsTo"));
 		String address = request.getParameter("address");
 		
-		try {
-			edi.insertEmployee(first, last, dob, supervisor, address);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try 
+//		{
+//			edi.insertEmployee(first, last, dob, supervisor, address);
+//		} 
+//		catch (SQLException e) 
+//		{
+//			e.printStackTrace();
+//		}
 		
 		out.print("Sorry, username or password error.");
 		request.getRequestDispatcher("login.html").include(request, response);
