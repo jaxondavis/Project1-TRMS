@@ -2,12 +2,20 @@ package com.revature.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.beans.Address;
+import com.revature.beans.Employee;
+import com.revature.daoimpl.AddressDaoImpl;
+import com.revature.daoimpl.EmployeeDaoImpl;
 
 /**
  * Servlet implementation class MyEmployeesServlet
@@ -21,23 +29,44 @@ public class MyEmployeesServlet extends HttpServlet {
 	 * If session isn't void, get session and all employees that report to user, directly or indirectly. Should pass through DAO.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In doGet of myEmployees.");
-		HttpSession session = null;
-		PrintWriter out = response.getWriter();
+		System.out.println("in doget for /myEmployees");
+		HttpSession session = request.getSession();
+		EmployeeDaoImpl edi = new EmployeeDaoImpl();
+		AddressDaoImpl adi = new AddressDaoImpl();
+		Integer employeeID = 0;
+		ArrayList<Employee> employeeList = null;
+		Employee employee = null;
+		String reportsTo = null;
+		Address address = null;
 		
-		if (request.getSession() == null)
+		if(session == null)
 		{
-			System.out.println("Returning to login page.");
-			request.getRequestDispatcher("login.html").include(request, response);
+			request.getRequestDispatcher("html/login.html").forward(request, response);
 		}
 		else
 		{
-			session = request.getSession();
-			Integer emplID = (Integer)session.getAttribute("emplID");
-			out.write("Employee #" + emplID + ": ");
+			employeeID = (Integer)session.getAttribute("employeeid");
+			try {
+				employeeList = new ArrayList<Employee>(edi.viewEmployeesReportingTo(employeeID));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block. DON'T PRINT STACK.
+				//e.printStackTrace();
+			}
 			
-			//Start getting list of Employees. Should we have this as procedure/method in DaoImpl?
+		//Writes object to JSON
+		ObjectMapper mapper = new ObjectMapper();
+		PrintWriter out = response.getWriter();
+		String emplListJSON = mapper.writeValueAsString(employeeList);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.println(emplListJSON);
+		System.out.println(emplListJSON);
+		out.flush();
+		
+		request.getRequestDispatcher("html/myaccount/myEmployees.html").forward(request, response);
+			
 		}
+		
 	}
 
 }
