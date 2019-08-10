@@ -101,5 +101,23 @@ public class AddressDaoImpl implements AddressDao {
 		}
 		return addrID;
 	}
+	
+	public Address viewAddress(int addrId) throws SQLException {
+		Connection conn = cf.getConnection();
+		//Object [] addressAttributes = new Object[5];
+		Address a = null;
+		
+		String sql = "SELECT * FROM ADDRESS WHERE addressid = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, addrId);
+		ResultSet rs = ps.executeQuery();
+		
+		while (rs.next())
+		{
+			a = new Address(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+		}
+		
+		return a;
+	}
 
 }

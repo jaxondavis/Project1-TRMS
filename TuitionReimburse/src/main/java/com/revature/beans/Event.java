@@ -123,4 +123,13 @@ public class Event
 		this.typeID = typeID;
 	}
 
+	@Override
+	public String toString() {
+		return "Event [eventID=" + eventID + ", eventName=" + eventName + ", eventDate=" + eventDate + ", eventTime="
+				+ eventTime + ", eventCost=" + eventCost + ", eventDesc=" + eventDesc + ", locationID=" + locationID
+				+ ", formatID=" + formatID + ", typeID=" + typeID + "]";
+	}
+	
+	
+
 }
