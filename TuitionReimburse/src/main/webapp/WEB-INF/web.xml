@@ -171,4 +171,14 @@
     <servlet-name>MyEmployeesApplicationDeniedServlet</servlet-name>
     <url-pattern>/myAccount/myEmployees/applications/:applicationID/denied</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoadAccountServlet</display-name>
+    <servlet-name>LoadAccountServlet</servlet-name>
+    <servlet-class>com.revature.servlet.LoadAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadAccountServlet</servlet-name>
+    <url-pattern>/loadAccount</url-pattern>
+  </servlet-mapping>
 </web-app>

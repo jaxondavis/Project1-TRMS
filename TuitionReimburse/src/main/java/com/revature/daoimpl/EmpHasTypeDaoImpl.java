@@ -16,13 +16,17 @@ public class EmpHasTypeDaoImpl implements EmpHasTypeDao
 	public int getTypeID(int employeeID) throws SQLException 
 	{
 		//returns typeID based on query from EMPLOYEEHASTYPE WHERE EMPLOYEEID = ?
-		int typeID = 0;
 		Connection conn = cf.getConnection();
-		String sql = "SELECT * FROM EMPLOYEEHASTYPE WHERE EMPLOYEEID = ?";
+		String sql = "SELECT * FROM EMPLOYEEHASTYPE";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, employeeID);
 		ResultSet rs = ps.executeQuery();
-		typeID = rs.getInt(2);
-		return typeID;
+		while(rs.next())
+		{
+			if(employeeID == rs.getInt(1))
+			{
+				return rs.getInt(2);
+			}
+		}
+		return 0;
 	}
 }

@@ -1,7 +1,6 @@
 package com.revature.dao;
 
 import java.sql.SQLException;
-import java.sql.Date;
 
 import com.revature.beans.Address;
 import com.revature.beans.Employee;

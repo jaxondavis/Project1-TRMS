@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.beans.GradingFormat;
-import com.revature.beans.RequestStatus;
 import com.revature.dao.GradingFormatDao;
 import com.revature.util.ConnFactory;
 
