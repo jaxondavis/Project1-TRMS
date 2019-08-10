@@ -2,7 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,10 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Application;
 import com.revature.daoimpl.ApplicationDaoImpl;
+import com.revature.daoimpl.EventDaoImpl;
+import com.revature.daoimpl.EventLocationDaoImpl;
+import com.revature.daoimpl.EventTypeDaoImpl;
+import com.revature.daoimpl.GradingDaoImpl;
 
 /**
  * Servlet implementation class CreateApplicationServlet
@@ -35,7 +41,14 @@ public class CreateApplicationServlet extends HttpServlet {
 		System.out.println("in doget for /application/create");
 		HttpSession session = request.getSession();
 		ApplicationDaoImpl adi = new ApplicationDaoImpl();
+		EventDaoImpl edi = new EventDaoImpl();
+		EventLocationDaoImpl eldi = new EventLocationDaoImpl();
+		GradingDaoImpl gdi = new GradingDaoImpl();
+		EventTypeDaoImpl etdi = new EventTypeDaoImpl();
 		Application app = null;
+		
+		Integer eventID = 0;
+		Integer locationID = 0;
 		
 		if(session == null)
 		{
@@ -43,18 +56,40 @@ public class CreateApplicationServlet extends HttpServlet {
 		}
 		else
 		{
-			//TODO: Confirm attribute names are correct. If this isn't useful, replace with a JSON parser.
+			//Get params from form.
+			String eventName = (String)session.getAttribute("event_name");
+			Date date = (Date)session.getAttribute("date");
+			Time time = (Time)session.getAttribute("time");
+			String location = (String)session.getAttribute("location");
+			String city = (String)session.getAttribute("city");
+			String state = (String)session.getAttribute("state");
+			String zip = (String)session.getAttribute("zip");
+			String eventType = (String)session.getAttribute("event_type");
+			Double cost = (Double)session.getAttribute("cost");
+			String grading = (String)session.getAttribute("grading_format");
+			String description = (String)session.getAttribute("description");
 			String justify = (String)session.getAttribute("justification");
+			
+			//Get params from session.
 			Integer employeeID = (Integer)session.getAttribute("employeeID");
-			Integer reqID = (Integer)session.getAttribute("requestID");
-			Integer eventID = (Integer)session.getAttribute("eventID");
 			
 			//Creates account using params passed through. Should get Parameter/Element names.
 			try {
-				adi.insertApplication(justify, employeeID, reqID, eventID);
+				eldi.addEventLocation(location, city, state, zip);
+				locationID = eldi.confirmEventLocation(location, city, state, zip);
+				
+				Integer formatID = gdi.getGradingID(grading);
+				Integer typeID = etdi.getTypeID(eventType);
+				
+				edi.addEvent(eventName, date.toString(), time.toString(), cost, description, locationID, formatID, typeID);
+				
+				eventID = edi.getEvent(eventName);
+				
+				adi.insertApplication(justify, employeeID, 1, eventID);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
+				System.out.println("Couldn't connect to database. Please try again later.");
 			}
 			
 			System.out.println("Application submitted.");

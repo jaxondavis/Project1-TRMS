@@ -57,6 +57,21 @@ public class EventDaoImpl {
 		}
 		return eventList;
 	}
+	
+	public Integer getEvent(String eventName) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		Integer eventID = 0;
+		String sql = "SELECT EVENTID FROM EVENT WHERE EVENTNAME = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, eventName);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			eventID = rs.getInt(1);
+		}
+		return eventID;
+	}
 
 	//create read method that selects an event by its id
 	//create update method utilizing the procedure
