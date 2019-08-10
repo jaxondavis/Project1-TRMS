@@ -101,5 +101,31 @@ public class ApplicationDaoImpl {
 		
 		return appList;
 	}
+	
+	//For use by admins/BenCos.
+	//TODO: Include conditions in statement to ensure employee is a manager? Use reportsTo to get a particular list?
+	public List<Application> getAllApplications() throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		ArrayList<Application> appList = new ArrayList<Application>();
+		Application app = null;
+		String sql = "SELECT * FROM APPLICATION";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if (rs.equals(null))
+		{
+			System.out.println("No applications found.");
+		}
+		else
+		{
+			while (rs.next())
+			{
+				app = new Application(rs.getString(2), rs.getDate(3), rs.getInt(4),rs.getInt(5), rs.getInt(6));
+				appList.add(app);
+			}
+		}
+		
+		return appList;
+	}
 
 }
