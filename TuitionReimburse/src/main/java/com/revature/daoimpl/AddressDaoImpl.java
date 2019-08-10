@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.beans.Address;
+import com.revature.beans.Employee;
 import com.revature.dao.AddressDao;
 import com.revature.util.ConnFactory;
 
@@ -20,9 +21,27 @@ public class AddressDaoImpl implements AddressDao {
 
 	//Creates Address object based off of address ID. May not be necessary?
 	@Override
-	public Address getAddress(int addrID) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public Address getAddress(int addrID) throws SQLException 
+	{
+		Address add = null;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM ADDRESS WHERE ADDRESSID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, addrID);
+		ResultSet rs = ps.executeQuery();
+		if (rs.equals(null))
+		{
+			System.out.println("No address found for "+addrID);
+		}
+		else
+		{
+			while (rs.next())
+			{
+				add = new Address(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+			}
+		}
+		
+		return add;
 	}
 
 	//Should revise to include column name & new value as args.

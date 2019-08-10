@@ -1,0 +1,17 @@
+.employee_div_space {
+    margin-bottom:10px;
+}
+
+.employee_div_color {
+    color:darkslateblue;
+}
+
+td {
+    padding-bottom: 10px;
+}
+
+textarea {
+    width:450px;
+    height:150px;
+    resize:none;
+}

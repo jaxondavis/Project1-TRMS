@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.beans.EventType;
-import com.revature.beans.GradingFormat;
 import com.revature.dao.EventTypeDao;
 import com.revature.util.ConnFactory;
 

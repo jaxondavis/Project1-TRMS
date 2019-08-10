@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 			
 			session.setAttribute("name", email);			//Will these be necessary? Can we remove these and just use the cookie?
 			session.setAttribute("emplID", employeeID);
-			response.sendRedirect("/myAccount");
+			response.sendRedirect("myAccount");
 		}
 		else
 		{

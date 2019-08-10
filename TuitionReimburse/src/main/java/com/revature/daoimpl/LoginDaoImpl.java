@@ -1,6 +1,5 @@
 package com.revature.daoimpl;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +35,31 @@ public static ConnFactory cf = ConnFactory.getInstance();
 				if(rs.getInt(1) == logID)
 				{
 					log = new Login(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+				}
+			}
+		}
+		return log;
+	}
+	
+	public Login getLoginFromEmployee(int empID) throws SQLException 
+	{
+		Login log = null;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM Login WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, empID);
+		ResultSet rs = ps.executeQuery();
+		if (rs.equals(null))
+		{
+			System.out.println("Couldn't find Login matching employeeid "+empID);
+		}
+		else
+		{
+			while (rs.next())
+			{
+				if(rs.getInt(4) == empID)
+				{
+					log = new Login(rs.getInt(1), rs.getString(3), rs.getString(2), rs.getInt(4));
 				}
 			}
 		}

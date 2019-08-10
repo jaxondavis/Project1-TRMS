@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.revature.beans.EventLocation;
 import com.revature.beans.RequestStatus;
 import com.revature.dao.RequestStatusDao;
 import com.revature.util.ConnFactory;
