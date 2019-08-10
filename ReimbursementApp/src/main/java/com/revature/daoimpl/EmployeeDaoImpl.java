@@ -118,7 +118,6 @@ public class EmployeeDaoImpl {
 		ResultSet rs = ps.executeQuery();
 		while (rs.next())
 		{
-			//Don't understand why this is throwing an error. It matches the args for the constructor...
 			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
 					rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getInt(11));
 			employeeList.add(employee);
