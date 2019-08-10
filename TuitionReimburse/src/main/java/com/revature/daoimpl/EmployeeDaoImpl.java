@@ -1,67 +1,59 @@
 package com.revature.daoimpl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.revature.beans.Address;
 import com.revature.beans.Employee;
-import com.revature.beans.EmployeeHasType;
-import com.revature.beans.Login;
-import com.revature.dao.EmployeeDao;
 import com.revature.util.ConnFactory;
 
-public class EmployeeDaoImpl implements EmployeeDao {
-
+/**
+ * @author Revature Guest
+ *
+ */
+public class EmployeeDaoImpl {
 	public static ConnFactory cf = ConnFactory.getInstance();
+
 	
-	//Confirms that username/password match in EmployeeLogin table, then use userID to get Employee.
-	//PARAMS: username, password - ideally from LoginServlet
-	@Override
-	public int verifyPassword(String username, String password) throws SQLException 
-	{
+	//TODO: create update method to utilize the procedure
+	public String getName(Integer employeeid) throws SQLException {
 		Connection conn = cf.getConnection();
-		//Statement - compiles on SQL side. Generally terrible. Allows for SQL Injection. Headaches. DON'T DO IT.
-		String sql = "SELECT PASSWORD FROM LOGIN WHERE USERNAME = ?";
-		String pw = null;
-		int employeeID = 0;
+		String name = null;
+		String sql = "SELECT FIRSTNAME, LASTNAME FROM EMPLOYEE WHERE EMPLOYEEID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, username);
+		ps.setInt(1, employeeid);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next())
 		{
-			pw = rs.getString(1);
+			name = rs.getString(1) + " " + rs.getString(2);
 		}
-		//If password checks out, return employeeID for use to getEmployee.
-		if (password.equals(pw))
-		{
-			String sql2 = "SELECT EMPLOYEEID FROM LOGIN WHERE USERNAME = ? AND PASSWORD = ?";
-			PreparedStatement ps2 = conn.prepareStatement(sql2);
-			ps2.setString(1, username);
-			ps2.setString(2, password);
-			ResultSet rs2 = ps.executeQuery();
-			while (rs2.next())
-			{
-				employeeID = rs.getInt(1);
-			}
-			return employeeID;
-		}
-		else
-		{
-			return 0;
-		}
+		return name;
 	}
 
-	//Will likely remove due to security risk w/Employee class. Returns an Employee object.
-	@Override
-	public Employee getEmployee(int userID) throws SQLException 
-	{
-		Employee empl = null;
+	public Integer getTypeId(Integer employeeid) throws SQLException {
+		Connection conn = cf.getConnection();
+		Integer typeID = 0;
+		String sql = "SELECT TYPEID FROM EMPLOYEEHASTYPE WHERE EMPLOYEEID = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, employeeid);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			typeID = rs.getInt(1);
+		}
+		return typeID;
+	}
+
+	public Employee getEmployee(Integer employeeid) throws SQLException {
+		Employee employee = null;
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEEID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, userID);
+		ps.setInt(1, employeeid);
 		ResultSet rs = ps.executeQuery();
 		if (rs.equals(null))
 		{
@@ -71,64 +63,88 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		{
 			while (rs.next())
 			{
-				if(rs.getInt(1) == userID)
+				employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
+						rs.getInt(6),rs.getInt(7));
+			}
+		}
+		
+		return employee;
+	}
+
+	public String getReportsTo(int reportsTo) throws SQLException {
+		String employeeName="";
+		Connection conn = cf.getConnection();
+		String sql = "SELECT firstname, lastname FROM EMPLOYEE WHERE REPORTSTO = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, reportsTo);
+		ResultSet rs = ps.executeQuery();
+		if (rs.equals(null))
+		{
+			System.out.println("Invalid login. Please try again.");
+		}
+		else
+		{
+			while (rs.next())
+			{
+				employeeName += rs.getString(1) + " " + rs.getString(2);
+			}
+		}
+		
+		return employeeName;
+	}
+	
+	//Uses stored procedure to delete employee from table.
+	public void deleteEmployee(Integer employeeID) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		String sql = "{ call deleteemployee(?)";
+		CallableStatement call = conn.prepareCall(sql);
+		call.setInt(1, employeeID);
+		call.execute();
+		System.out.println("Employee has been DELETED! YEEEEEEEEAAAASSSSSSSSS.");
+	}
+	
+	//Returns list of employees that report to a given user. Will need to access ReportsTo table. Check into this.
+	public List<Employee> viewEmployeesReportingTo(Integer reportsTo) throws SQLException
+	{
+		Connection conn = cf.getConnection();
+		ArrayList<Employee> employeeList = new ArrayList<Employee>();
+		String sql = "SELECT * FROM EMPLOYEE WHERE REPORTSTO = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, reportsTo);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next())
+		{
+			//Don't understand why this is throwing an error. It matches the args for the constructor...
+			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
+					rs.getInt(6),rs.getInt(7));
+			employeeList.add(employee);
+		}
+		return employeeList;
+	}
+	
+	public int verifyPassword(String email, String pass) throws SQLException
+	{
+		int empID = 0;
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM LOGIN";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		if (rs.equals(null))
+		{
+			System.out.println("Invalid login. Please try again.");
+		}
+		else
+		{
+			while (rs.next())
+			{
+				if(email.equals(rs.getString(3)) && pass.equals(rs.getString(2)))
 				{
-					empl = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),rs.getInt(6),rs.getInt(7));
+					empID = rs.getInt(4);
 				}
 			}
 		}
-		return empl;
-	}
-
-	@Override
-	public void updateEmployee(Employee emp, EmployeeHasType empT, Address add, Login log) throws SQLException 
-	{
-		//update core employee information
-		Connection conn = cf.getConnection();
-		String sql = "UPDATE EMPLOYEE SET FIRSTNAME = ?, LASTNAME = ?, BIRTHDATE = ?, REPORTSTO = ? WHERE EMPLOYEEID = ?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, emp.getFirstname());
-		ps.setString(2, emp.getLastname());
-		ps.setDate(3, emp.getBirthdate());
-		ps.setInt(4, emp.getReportsTo());
-		ps.setInt(5, emp.getEmployeeID());
-		ResultSet rs = ps.executeQuery();
 		
-		//update the employees login info
-		sql = "UPDATE LOGIN SET EMAIL = ?, PASSWORD = ? WHERE EMPLOYEEID = ?";
-		ps = conn.prepareStatement(sql);
-		ps.setString(1, log.getEmail());
-		ps.setString(2, log.getPassword());
-		ps.setInt(3, emp.getEmployeeID());
-		rs = ps.executeQuery();
-		
-		//update the employees address info
-		sql = "UPDATE ADDRESS SET ADDRESS = ?, CITY = ?, STATE = ?, ZIPCODE = ? WHERE EMPLOYEEID = ?";
-		ps = conn.prepareStatement(sql);
-		ps.setString(1, add.getAddress());
-		ps.setString(2, add.getCity());
-		ps.setString(3, add.getState());
-		ps.setString(4, add.getZipcode());
-		ps.setInt(5, emp.getEmployeeID());
-		rs = ps.executeQuery();
-		
-		//update the employees type
-		sql = "UPDATE EMPLOYEEHASTYPE SET TYPEID = ? WHERE EMPLOYEEID = ?";
-		ps = conn.prepareStatement(sql);
-		ps.setInt(1, empT.getTypeID());
-		ps.setInt(2, emp.getEmployeeID());
-		rs = ps.executeQuery();
+		return empID;
 	}
-	
-	@Override
-	public void deleteEmployee(Employee emp) throws SQLException
-	{
-		//delete the employee based on the inputed employee id
-		Connection conn = cf.getConnection();
-		String sql = "DELETE FROM EMPLOYEE WHERE EMPLOYEEID = ?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, emp.getEmployeeID());
-		ResultSet rs = ps.executeQuery();
-	}
-
 }

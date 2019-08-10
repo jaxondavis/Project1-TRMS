@@ -49,20 +49,20 @@ public class MyAccountServlet extends HttpServlet {
 		}
 		
 		//Pass along employee vals to a PrintWriter(?)
-		
+		System.out.println(empl);
 		
 		//Get value from EmployeeHasType table. Can either use to call EmployeeType table to get String or just use typeID for if statements.
 	//	int typeID = ehti.getType(emplID);
 	//	emplType = eti.getType(typeID);
 		
 		//Does check for employee/supervisor. May be removed/reimplemented for checks for admin specific functions.
-		if (emplType == "employee")
+		if (emplType.equals("Employee"))
 		{
 			//Pass to employee landing page.
 			System.out.println("Redirecting to employee page.");
 			request.getRequestDispatcher("login.html").include(request, response);
 		}
-		else if (emplType == "benco" || emplType == "depthead" || emplType == "supervisor")
+		else if (emplType.equals("Benefits Coordinator") || emplType.equals("Department Head") || emplType.equals("Direct SupervisorS"))
 		{
 			//Pass to admin landing page.
 		}
