@@ -100,5 +100,12 @@ public class Application
 	public void setGradeID(int gradeID) 
 	{
 		this.gradeID = gradeID;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Application [appID=" + appID + ", justification=" + justification + ", submitDate=" + submitDate
+				+ ", employeeID=" + employeeID + ", reqID=" + reqID + ", eventID=" + eventID + ", gradeID=" + gradeID
+				+ "]";
+	}
 }

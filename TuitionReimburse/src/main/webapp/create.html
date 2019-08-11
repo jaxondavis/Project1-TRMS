@@ -4,134 +4,173 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>New Application Form</title>
+        
+
         <link rel="stylesheet" type="text/css" href="style/main.css">
         <link rel="stylesheet" type="text/css" href="style/employee_account.css">
+        <!--datepicker -->
+        <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+            
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        
     </head>
     <body>
-        
-         <div class="top_content">
+
+        <div class="top_content">
             <div class="title_div">
                 <h4>Tutition Reinbursement Management System</h4>
             </div>
-        <div class="logout_div">
-            <button class="button1" id="logout">LOGOUT </button> 
-        </div>
-
-        <div class="navbar">
-            <nav>
-                    <button id="home">Home</button> |
-                    
-                    <button id="account">
-                    My Account</button> | 
-                
-                    <button id="applications">
-                    Applications </button> |
-        
-                    <button id="events">
-                    Current Events</button> 
-
-            </nav>
-        </div>
-        </div>
-        
-        
-        
-            <div class="content_wrapper">
-                <div id="info_container">
-                    <div>
-                        <h3>New Application Form</h3>
-                    </div>
-                  
-
-                </div>
-                   
-                
-                    <div class="form_container">
-                        <form action="#" method="post">
-                            <hr>
-                            <table>
-                
-                                <tr><td>
-                                Event Name:<br>
-                                <input type="text" name="event_name"></td></tr>
-                                <tr><td>
-                                Date:<br>
-                                <input type="text" name="date"></td></tr>
-                                <tr><td>   
-                                Time:<br>
-                                <input type="text" name="time">
-                                </td></tr>
-                                <tr><td>    
-                                Location:<br>
-                                <input type="text" name="location"></td></tr>
-                
-                                <tr><td>
-                                Event Type:<br>
-                                <input type="text" name="event_type">
-                                </td></tr>   
-                                <tr><td>
-                                Cost:<br>
-                                <input type="text" name="cost">
-                                </td></tr>
-                                <tr><td>
-                                Grading Format:<br>
-                                <input type="text" name="grading_format">
-                                </td></tr>   
-                                <tr><td>
-                                (Other):<br>
-                                <input type="text" name="other_1">
-                                </td></tr>
-                                <tr><td>
-                                Minimum Passing Grade:<br>
-                                <input type="text" name="min_pass_grade">
-                                </td></tr>
-                                <tr><td>
-                                (Other):<br>
-                                <input type="text" name="other_2">
-                                </td></tr>
-                                <tr><td>
-                                Description:<br>
-                                <textarea name="description">
-                
-                                </textarea>
-                                </td></tr>
-                                <tr><td>
-                                Justification:<br>
-                                <input type="text" name="justification">
-                                </td></tr>
-                                <tr><td>
-                                (Other):<br>
-                                <textarea type="text" name="other_3"></textarea>
-                                </td></tr>
-                            </table>
-                                <br><br>
-                            
-                                
-                            <h3>Attachments:</h3><br><br>
-                            <button id="attach" class="button1">Attach New File</button>
-                            <button id="remove" class="button1">Remove File</button>
-                            
-                            <hr>
-                            <div id="button_center1">
-                                
-                            
-                            
-                            <button id="submit" class="button2">Submit Application</button>
-                                
-                            <button id="cancel" class="button3">Cancel Application</button>
-                            </div>
-                
-                        </form>
-                
-                    </div>
+            <div class="logout_div">
+                <button class="button1" id="logout">LOGOUT </button> 
             </div>
-                  
-    
-    
+
+            <div class="navbar">
+                <nav>
+                    <button id="home">Home</button> |
+
+                    <button id="account">
+                        My Account</button> | 
+
+                    <button id="applications">
+                        Applications </button> |
+
+                    <button id="events">
+                        Current Events</button> 
+
+                </nav>
+            </div>
+        </div>
+
+
+
+        <div class="content_wrapper">
+            <div id="info_container">
+                <div>
+                    <h3>New Application Form</h3>
+                    <p class="error">*denotes a required field</p>
+                </div>
+            </div>
+
+
+            <div class="form_container">
+                <form action="#" onSubmit="return checkForm()" method="post">
+                    <hr>
+                    <table>
+
+                        <tr><td>
+                            
+                            Event Name:<span class="error">*</span> <br>
+                            <input type="text" name="event_name" required></td></tr>
+                        <tr><td>
+                            Date:<span class="error">*</span><br>
+                            <input type="text" name="date" id="datepicker" required></td></tr>
+                        <tr><td>   
+                            Time: <span class="error">*</span><br>
+                            <input type="text" name="time" required>
+                            </td></tr>
+                        <tr><td>    
+                            Location:<span class="error">*</span><br>
+                            <input type="text" name="location" required></td></tr>
+
+                        <tr><td>
+                            Event Type:<span class="error">*</span><br>
+                            <input type="text" name="event_type" required>
+                            </td></tr>   
+                        <tr><td>
+                            Cost:<span class="error">*</span><br>
+                            <input type="text" name="cost" id="cost" oninput="empty()" required>
+                            <span class="error" id="error"></span>
+                            </td></tr>
+                        <tr><td>
+                            Grading Format:<span class="error">*</span><br>
+                            <input type="text" name="grading_format" required>
+                            </td></tr>   
+                        <tr><td>
+                            (Other):<br>
+                            <input type="text" name="other_1">
+                            </td></tr>
+                        <tr><td>
+                            Minimum Passing Grade:<span class="error">*</span><br>
+                            <input type="text" name="min_pass_grade" required>
+                            </td></tr>
+                        <tr><td>
+                            (Other):<br>
+                            <input type="text" name="other_2">
+                            </td></tr>
+                        <tr><td>
+                            Description:<span class="error">*</span><br>
+                            <textarea name="description" required>
+
+                            </textarea>
+                            </td></tr>
+                        <tr><td>
+                            Justification:<span class="error">*</span><br>
+                            <input type="text" name="justification" required>
+                            </td></tr>
+                        <tr><td>
+                            (Other):<br>
+                            <textarea type="text" name="other_3"></textarea>
+                            </td></tr>
+                    </table>
+
+                    
+                    <div id="button_center1">
+                        <button id="submit" class="button2">Submit Application</button>
+
+                        <button id="cancel" class="button3">Cancel Application</button>
+                    </div>
+                </form>
+                <div class="form_container"><br>
+                    <hr>
+                    <h3>Attachments:</h3>
+                    <form action="#" method="post" enctype="multipart/form-data" >
+                        <input type="file" name="fileName">
+                        <button id="submit" class="button1">Upload Attachment</button>
+                    </form>
+                
+                
+                
+                </div>
+
+            </div>
+        </div>
+
+
+
     </body>
-    <script type="text/javascript">
+
+          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          <script>
+          $( function() {
+            $( "#datepicker" ).datepicker({ minDate: -0, maxDate: "+12M +10D" });
+          } );
+    </script>
+    <script>
+        function checkForm(){
+            var cost = document.getElementById("cost").value.trim();
+            var symbolCheck = /^[_A-z0-9\.]*((-|\s)*[_A-z0-9])*$/g;
+            
+            if (!symbolCheck.test(cost)) {
+                errorMessage = "Please do not enter '$' symbol or special characters";
+                document.getElementById("error").innerHTML = errorMessage;
+                
+                return false;
+            }
+            
+            return true;
+        };
     
+        function empty(){
+            document.getElementById("error").innerHTML = "";
+            
+        }
     
     
     </script>
+          
+        
+    
+    
 </html>

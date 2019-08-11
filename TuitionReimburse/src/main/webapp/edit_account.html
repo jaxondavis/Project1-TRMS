@@ -4,18 +4,16 @@
         
         <title>Edit My Account</title>
         <meta charset="ISO-8859-1">
+        
         <link rel="stylesheet" type="text/css" href="style/main.css">
         <link rel="stylesheet" type="text/css" href="style/employee_account.css">
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        
         <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
+  
    
     
     </head>
@@ -30,15 +28,17 @@
 
         <div class="navbar">
             <nav>
-                    <!--http://localhost:8080/Project1-TRMS/TuitionReinburse/edit_account.html-->
-                    <a href="edit_account.html">
-                    My Account</a> | 
-                
-                    <a href="applications.html">
-                    Applications </a>|
-        
-                    <a href="current_events.html">
-                    Current Events</a> 
+                    <button id="home">Home</button> |
+
+                    <button id="account">
+                        My Account</button> | 
+
+                    <button id="applications">
+                        Applications </button> |
+
+                    <button id="events">
+                        Current Events</button> 
+
 
             </nav>
         </div>
@@ -170,14 +170,14 @@
                     } 
                     return true;
             }
-           
-            
-               
-            
-            
-        
-        
         </script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
     </body>
 
 </html>

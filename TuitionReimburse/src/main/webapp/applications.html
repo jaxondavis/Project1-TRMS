@@ -2,9 +2,10 @@
 
 <html>
     <head>
-        <meta charset="ISO-8859-1">
+        <meta charset="ISO-8859-1"/>
         <title>My Applications</title>
-        <link rel="stylesheet" type="text/css" href="style/main.css">
+        <!--<link rel="stylesheet" type="text/css" href="style/employee.css">-->
+        <link rel="stylesheet" type="text/css" href="../style/main.css"/>
     </head>
     <body>  
         <div class="top_content">
@@ -22,35 +23,27 @@
                     <button id="account">
                     My Account</button> | 
                 
-                    <button id="applications">
+                    <button id="applicationsBtn">
                     Applications </button> |
         
                     <button id="events">
                     Current Events</button> 
 
-            </nav>
+                </nav>
+            </div>
         </div>
+        <div class="content_wrapper">
+
+            <div id="info_container">
+                <div>
+                    <h3>Applications</h3>
+                    <span> <button id="create">Create New Application</button></span></span>
+                </div>
+                <div id="applications">
+                    <!--insert applications list  -->
+                </div>
+            </div>
         </div>
-            <div class="content_wrapper">
-
-            
-
-<div id="info_container">
-    <div>
-        <h3>Applications</h3>
-        <span> <button id="create">Create New Application</button></span>
-    </div>
-    <div id="applications_listing">
-        <!--insert applications list  -->
-    </div>
-    
-</div>
-</div>
-    
+        <script type="text/javascript" src="../js/applications.js?v=1"></script>
     </body>
-    <script type="text/javascript">
-    
-    
-    
-    </script>
 </html>

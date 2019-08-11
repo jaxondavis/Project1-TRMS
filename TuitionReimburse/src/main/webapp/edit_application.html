@@ -4,15 +4,11 @@
     <head>
         <meta charset="ISO-8859-1">
         <title>Edit Application</title>
+        <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+        
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
+  
   
         <link rel="stylesheet" type="text/css" href="style/main.css">
         <link rel="stylesheet" type="text/css" href="style/employee_account.css">
@@ -50,6 +46,7 @@
 <div id="info_container">
     <div>
         <h3>Edit Application</h3>
+         <p class="error">*denotes a required field</p>
     </div>
     <div id="applications_id">
         <!--insert employee application  -->
@@ -58,52 +55,52 @@
                             <table>
                 
                                 <tr><td>
-                                Event Name:<br>
-                                <input type="text" name="event_name"></td></tr>
+                                Event Name:<span class="error">*</span> <br>
+                                <input type="text" name="event_name" required></td></tr>
                                 <tr><td>
-                                Date:<br>
-                                <input type="text" name="date"></td></tr>
+                                Date:<span class="error">*</span><br>
+                                <input type="text" name="date" id="datepicker" required></td></tr>
                                 <tr><td>   
-                                Time:<br>
-                                <input type="text" name="time">
+                                Time:<span class="error">*</span><br>
+                                <input type="text" name="time" required>
                                 </td></tr>
                                 <tr><td>    
-                                Location:<br>
-                                <input type="text" name="location"></td></tr>
+                                Location:<span class="error">*</span><br>
+                                <input type="text" name="location" required></td></tr>
                 
                                 <tr><td>
-                                Event Type:<br>
-                                <input type="text" name="event_type">
+                                Event Type:<span class="error">*</span><br>
+                                <input type="text" name="event_type" required>
                                 </td></tr>   
                                 <tr><td>
-                                Cost:<br>
-                                <input type="text" name="cost">
+                                Cost:<span class="error">*</span><br>
+                                <input type="text" name="cost" required>
                                 </td></tr>
                                 <tr><td>
-                                Grading Format:<br>
-                                <input type="text" name="grading_format">
+                                Grading Format:<span class="error">*</span><br>
+                                <input type="text" name="grading_format" required>
                                 </td></tr>   
                                 <tr><td>
                                 (Other):<br>
                                 <input type="text" name="other_1">
                                 </td></tr>
                                 <tr><td>
-                                Minimum Passing Grade:<br>
-                                <input type="text" name="min_pass_grade">
+                                Minimum Passing Grade:<span class="error">*</span><br>
+                                <input type="text" name="min_pass_grade" required>
                                 </td></tr>
                                 <tr><td>
                                 (Other):<br>
                                 <input type="text" name="other_2">
                                 </td></tr>
                                 <tr><td>
-                                Description:<br>
-                                <textarea name="description">
+                                Description:<span class="error">*</span><br>
+                                <textarea name="description" required>
                 
                                 </textarea>
                                 </td></tr>
                                 <tr><td>
-                                Justification:<br>
-                                <input type="text" name="justification">
+                                Justification:<span class="error">*</span><br>
+                                <input type="text" name="justification" required>
                                 </td></tr>
                                 <tr><td>
                                 (Other):<br>
@@ -132,9 +129,11 @@
 </div>
     
     </body>
-    <script type="text/javascript">
-    
-    
-    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+          $( function() {
+            $( "#datepicker" ).datepicker({ minDate: -0, maxDate: "+12M +10D" });
+          } );
     </script>
 </html>

@@ -3,51 +3,87 @@
         <title>Employee ID</title>
         <meta charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="style/main.css">
+        <link rel="stylesheet" type="text/css" href="style/employee_account.css">
     </head>
     <body>
         <div class="top_content">
             <div class="title_div">
                 <h4>Tutition Reinbursement Management System</h4>
             </div>
-        <div class="logout_div">
-            <button class="button1" id="logout">LOGOUT </button>
-        </div>
+            <div class="logout_div">
+                <button class="button1" id="logout">LOGOUT </button>
+            </div>
 
-        <div class="navbar">
-            <nav>
+            <div class="navbar">
+                <nav>
                     <button id="home">Home</button> |
-                    
+
                     <button id="account">
-                    My Account</button> | 
-                
+                        My Account</button> | 
+
                     <button id="applications">
-                    Applications </button> |
-                
+                        Applications </button> |
+
                     <button id="myemployee">My Employees</button> |
-        
+
                     <button id="events">
-                    Current Events</button> 
-            </nav>
+                        Current Events</button> 
+                </nav>
+            </div>
         </div>
-        </div>
-           <div class="content_wrapper">
+        <div class="content_wrapper">
 
-            
 
-<div id="info_container">
-    <div>
-        <h3>Employee ID</h3>
-    </div>
-    <div id="employee_listing">
-        <!--insert employee list  -->
-    </div>
-    
-</div>
-</div>
-    
-    
-    <script>
-    </script>
+
+            <div id="info_container">
+                <div>
+                    <h3>Employee ID</h3>
+                </div>
+                <div id="employee_listing">
+                    <div class="employee_div_space">
+                        Employee ID: <span id="emp_ID" class="employee_div_color"></span>      
+                    </div>
+
+                    <div class="employee_div_space">
+                        First Name: <span id="fname" class="employee_div_color"></span>  
+                    </div>
+                    <div class="employee_div_space">
+                        Last Name: <span id="lname" class="employee_div_color"></span>
+                    </div>
+                    <div class="employee_div_space">
+                        Employee Email: <span id="email" class="employee_div_color"></span>       
+                    </div>           
+                    <div class="employee_div_space">    
+                        Birthdate: <span id="bdate" class="employee_div_color"></span>  
+                    </div>    
+                    <div class="employee_div_space">
+                        Reports To: <span id="reports2" class="employee_div_color"></span> 
+                    </div>
+                    <div class="employee_div_space">   
+                        Employee Type: <span id="emp_type" class="employee_div_color"></span>  
+                    </div>
+                    <div class="employee_div_space">   
+                        Address: <span id="address" class="employee_div_color"></span>  
+                    </div>  
+                    <div class="employee_div_space">
+                        State: <span id="state" class="employee_div_color"></span>  
+                    </div>
+
+                    <div class="employee_div_space">
+                        City: <span id="city" class="employee_div_color"></span>  
+                    </div>
+                    <div class="employee_div_space">  
+                        Zip Code: <span id="zip" class="employee_div_color"></span>  
+                    </div> 
+                    <div>
+                    </div>
+
+                </div>
+            </div>
+        </div>  
+
+        <script>
+        </script>
     </body>
-    
+
 </html>

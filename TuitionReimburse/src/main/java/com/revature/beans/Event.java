@@ -7,8 +7,8 @@ public class Event
 	
 	private int eventID;
 	private String eventName;
-	private Date eventDate;
-	private Date eventTime;
+	private String eventDate;
+	private String eventTime;
 	private double eventCost;
 	private String eventDesc;
 	private int locationID;
@@ -20,7 +20,7 @@ public class Event
 		
 	}
 
-	public Event(int eventID, String eventName, Date eventDate, Date eventTime, double eventCost, String eventDesc, int locationID, int formatID, int typeID) 
+	public Event(int eventID, String eventName, String eventDate, String eventTime, double eventCost, String eventDesc, int locationID, int formatID, int typeID) 
 	{
 		this.eventID = eventID;
 		this.eventName = eventName;
@@ -53,22 +53,22 @@ public class Event
 		this.eventName = eventName;
 	}
 
-	public Date getEventDate() 
+	public String getEventDate() 
 	{
 		return eventDate;
 	}
 
-	public void setEventDate(Date eventDate) 
+	public void setEventDate(String eventDate) 
 	{
 		this.eventDate = eventDate;
 	}
 
-	public Date getEventTime() 
+	public String getEventTime() 
 	{
 		return eventTime;
 	}
 
-	public void setEventTime(Date eventTime) 
+	public void setEventTime(String eventTime) 
 	{
 		this.eventTime = eventTime;
 	}
@@ -129,7 +129,10 @@ public class Event
 				+ eventTime + ", eventCost=" + eventCost + ", eventDesc=" + eventDesc + ", locationID=" + locationID
 				+ ", formatID=" + formatID + ", typeID=" + typeID + "]";
 	}
+<<<<<<< HEAD
 	
 	
 
+=======
+>>>>>>> d140fc92882c587028aab56bfba263d384848413
 }

@@ -20,7 +20,7 @@ public class ApplicationDaoImpl implements ApplicationDao
 	{
 		Application app = null;
 		Connection conn = cf.getConnection();
-		String sql = "SELECT * FROM APPLICATION WHERE APPLICATIONID = ?";
+		String sql = "SELECT * FROM APPLICATION WHERE APPID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, appID);
 		ResultSet rs = ps.executeQuery();

@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 	{
 		System.out.println("In doGet of LoginServlet");
 		//Use RequestDispatcher to present login page.
+		//response.setContentType("text/html");
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}
@@ -57,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 	//		Cookie cookie = new Cookie("emplID", employeeID+""); //May not be needed if we're using session.
 	//		response.addCookie(cookie);
 			
-			session.setAttribute("name", email);			//Will these be necessary? Can we remove these and just use the cookie?
+			session.setAttribute("name", email);
 			session.setAttribute("emplID", employeeID);
 			response.sendRedirect("myAccount");
 		}

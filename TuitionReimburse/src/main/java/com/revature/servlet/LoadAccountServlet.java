@@ -33,7 +33,6 @@ public class LoadAccountServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
 		HttpSession session = null;
 		AddressDaoImpl adi = new AddressDaoImpl();
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
