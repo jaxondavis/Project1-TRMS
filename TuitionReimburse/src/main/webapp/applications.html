@@ -2,10 +2,10 @@
 
 <html>
     <head>
-        <meta charset="ISO-8859-1">
+        <meta charset="ISO-8859-1"/>
         <title>My Applications</title>
         <!--<link rel="stylesheet" type="text/css" href="style/employee.css">-->
-        <link rel="stylesheet" type="text/css" href="style/main.css">
+        <link rel="stylesheet" type="text/css" href="style/main.css"/>
     </head>
     <body>  
         <div class="top_content">
@@ -13,44 +13,37 @@
                 <h4>Tutition Reinbursement Management System</h4>
             </div>
         <div class="logout_div">
-            <input type="submit" class="button1" name="logout" value="LOGOUT">
+            <button class="button1" id="logout">LOGOUT </button>
         </div>
 
         <div class="navbar">
             <nav>
-                    <a href="edit_account.html">
-                    My Account</a> | 
+                    <button id="home">Home</button> |
+                    
+                    <button id="account">
+                    My Account</button> | 
                 
-                    <a href="applications.html">
-                    Applications </a>|
+                    <button id="applicationsBtn">
+                    Applications </button> |
         
-                    <a href="current_events.html">
-                    Current Events</a>
+                    <button id="events">
+                    Current Events</button> 
 
-            </nav>
+                </nav>
+            </div>
         </div>
+        <div class="content_wrapper">
+
+            <div id="info_container">
+                <div>
+                    <h3>Applications</h3>
+                    <span> <button id="create">Create New Application</button></span></span>
+                </div>
+                <div id="applications">
+                    <!--insert applications list  -->
+                </div>
+            </div>
         </div>
-
-            <div class="content_wrapper">
-
-            
-
-<div id="info_container">
-    <div>
-        <h3>Applications</h3>
-        <span> <a href="create.html">Create New Application</a></span>
-    </div>
-    <div id="applications_listing">
-        <!--insert applications list  -->
-    </div>
-    
-</div>
-</div>
-    
+        <script type="text/javascript" src="js/applications.js?v=1"></script>
     </body>
-    <script type="text/javascript">
-    
-    
-    
-    </script>
 </html>

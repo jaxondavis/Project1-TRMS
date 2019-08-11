@@ -27,13 +27,18 @@ public class EventDaoImpl implements EventDao {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, eventID);
 		ResultSet rs = ps.executeQuery();
-		if (rs.equals(null)) {
-			System.out.println("Couldn't find event matching id " + eventID);
-		} else {
-			while (rs.next()) {
-				if (rs.getInt(1) == eventID) {
-					event = new Event(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getDate(4), rs.getDouble(5),
-							rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9));
+
+		if (rs.equals(null))
+		{
+			System.out.println("Couldn't find event matching id "+eventID);
+		}
+		else
+		{
+			while (rs.next())
+			{
+				if(rs.getInt(1) == eventID)
+				{
+					event = new Event(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getInt(9));
 				}
 			}
 		}

@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>Application Check</title>
+        <meta charset="ISO-8859-1">
+        <link rel="stylesheet" type="text/css" href="style/main.css">
+        <link rel="stylesheet" type="text/css" href="style/employee_account.css">
+    </head>
+    <body>
+        <div class="top_content">
+            <div class="title_div">
+                <h4>Tutition Reinbursement Management System</h4>
+            </div>
+            <div class="logout_div">
+                <button class="button1" id="logout">LOGOUT </button>
+            </div>
+
+            <div class="navbar">
+                <nav>
+                    <button id="home">Home</button> |
+
+                    <button id="account">
+                        My Account</button> | 
+
+                    <button id="applications">
+                        Applications </button> |
+
+                    <button id="myemployee">My Employees</button> |
+
+                    <button id="events">
+                        Current Events</button> 
+                </nav>
+            </div>
+        </div>
+        <div class="content_wrapper">
+
+
+
+            <div id="info_container">
+                <div>
+                    <h3>Request Further Information</h3>
+
+                </div>
+                <div id="table_wrapper">
+                    <form action="#" method="POST">
+
+                        <table>
+                            <tr>
+                                <td>
+
+                                    <span><input type="checkbox" name="need_info" value="event_name" id="need_event_info"></span>
+
+                                    Event Name:<br>
+                                    <input type="text" name="event_name" id="event_name" readonly>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                    <span><input type="checkbox" name="need_info" value="date" id="need_date_info" readonly></span>
+                                    
+                                    Date:<br>
+                                    <input type="text" name="date" id="date" readonly></td></tr>
+                            <tr><td> 
+
+                                <span><input type="checkbox" name="need_info" value="time" id="need_time_info" readonly></span>
+                                
+                                Time:<br>
+
+                                <input type="text" name="time" id="time" readonly>
+                                </td></tr>
+                            <tr><td> 
+                                <span><input type="checkbox" name="need_info" id="need_location_info" value="location"></span>
+                                
+                                Location:<br>
+                                <input type="text" name="location" id="location" readonly></td></tr>
+
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" id="need_event_type_info" value="event_type"></span>
+                                
+                                Event Type:<br>
+                                <input type="text" name="event_type" id="event_type" readonly>
+                                </td></tr>   
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" id="need_cost_info" value="cost"></span>
+                                
+                                Cost:<br>
+                                <input type="text" name="cost" id="cost" readonly>
+                                </td></tr>
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" id="need_grading_info" value="grading_format"></span>
+                                
+                                Grading Format:<br>
+                                <input type="text" name="grading_format" id="grading_format" readonly>
+                                </td></tr>   
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" id="need_other1_info"value="other_1"></span>
+                                
+                                (Other):<br>
+                                <input type="text" name="other_1" id="other_1"  readonly>
+                                </td></tr>
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" value="min_pass_grade" id="need_passgrade_info"></span>
+                                
+                                Minimum Passing Grade:<br>
+                                <input type="text" name="min_pass_grade" id="min_pass_grade" readonly>
+                                </td></tr>
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" value="other_2" "need_other2_info"></span>
+                                
+                                (Other):<br>
+                                <input type="text" name="other_2" id="other_2" readonly>
+                                </td></tr>
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" value="description" id="need_description_info"></span>
+                                
+                                Description:<br>
+                                <textarea name="description" id="description"  readonly>
+                                </textarea>
+                                </td></tr>
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" value="justification" id="need_justification_info"></span>
+                                
+                                Justification:<br>
+                                <input type="text" name="justification" id="justification"  readonly>
+                                </td></tr>
+                            <tr><td>
+                                <span><input type="checkbox" name="need_info" value="other_3" id="need_other3_info"></span>
+                                
+                                (Other):<br>
+                                <textarea type="text" name="other_3" id="other_3"  readonly></textarea>
+                                </td></tr>
+                            <tr><td>
+                                
+                                Comments (optional):<br> <textarea name="reviewer_comments" id="reviewer_comments" ></textarea> 
+                                </td>
+                            </tr>
+
+                        </table>
+                        <button id="submit" class="button1">SEND</button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script>
+        </script>
+    </body>
+
+</html>

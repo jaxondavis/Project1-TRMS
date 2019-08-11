@@ -19,7 +19,7 @@ public class EventLocationDaoImpl implements EventLocationDao {
 	public EventLocation getEventLocation(int locID) throws SQLException {
 		EventLocation loc = null;
 		Connection conn = cf.getConnection();
-		String sql = "SELECT * FROM EVENTLOCATION WHERE EVENTLOCATIONID = ?";
+		String sql = "SELECT * FROM EVENTLOCATION WHERE LOCATIONID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, locID);
 		ResultSet rs = ps.executeQuery();

@@ -26,5 +26,13 @@ public class HomeServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("index.html");
 		rd.forward(request, response);
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		System.out.println("In doPost of HomeServlet");
+		//Use RequestDispatcher to present login page.
+		//RequestDispatcher rd = request.getRequestDispatcher("index.html");
+		response.sendRedirect("login");
+	}
 
 }
