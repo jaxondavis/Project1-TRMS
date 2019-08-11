@@ -33,64 +33,22 @@ public class MyAccountApplicationIDServlet extends HttpServlet {
 	 * Gets session if valid, and redirects to new path (w/unique app ID)
 	 * TODO: Figure out how we're getting applicationID. Likely through query statement from ApplicationDaoImpl
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = null;
-		PrintWriter out = response.getWriter();
-		Integer appID = 0;
-		Integer emplID = 0;
-		EmpHasTypeDaoImpl ehdi = new EmpHasTypeDaoImpl();
-		ApplicationDaoImpl adi = new ApplicationDaoImpl();
-		EventLocationDaoImpl eldi = new EventLocationDaoImpl();
-		EventDaoImpl edi = new EventDaoImpl();
-		EventTypeDaoImpl etdi = new EventTypeDaoImpl();
-		
-		Application app = new Application();
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		response.setContentType("text/html");
 		if (request.getSession() == null)
 		{
 			System.out.println("Returning to login page.");
-			request.getRequestDispatcher("login.html").include(request, response);
+			//request.getRequestDispatcher("login.html").include(request, response);
+			response.sendRedirect("login.html");
 		}
 		else
 		{
-			session = request.getSession();
-			appID = (Integer)session.getAttribute("appID");
-			emplID = (Integer)session.getAttribute("emplID");
-			request.getRequestDispatcher("/applications.html").include(request, response);
-			///myAccount/myEmployees/applications
-			//out.write("Employee #" + emplID + ": ");
-			try 
-			{
-				app = adi.getApplication(appID);
-				Event eve = edi.getEvent(app.getEventID());
-				EventLocation eveLoc = eldi.getEventLocation(eve.getLocationID());
-				//System.out.println(eveLoc);
-				EventType eveType = etdi.getEventType(eve.getTypeID());
-				//System.out.println(eveType);
-				ApplicationJSON json = new ApplicationJSON(app, eve, eveLoc, eveType);
-				
-				if(ehdi.getTypeID(emplID) == 1)
-				{
-					Gson gSon = new Gson();
-					//System.out.println(gSon.toJson(combinedList));
-					PrintWriter pw = response.getWriter();
-					response.setContentType("application/json");
-					//response.setCharacterEncoding("UTF-8");
-					//pw.print(jsonString);
-					pw.print(gSon.toJson(json));
-					//request.getRequestDispatcher("/applications").include(request, response);
-				}
-				else
-				{
-					//forward to /myAccount/myEmployees/applications
-					request.getRequestDispatcher("").forward(request, response);
-				}
-			} 
-			catch (SQLException e) 
-			{
-				e.printStackTrace();
-			}
+			System.out.println("Redirect to application id page.");
+			//session = request.getSession(); ///myAccount/application
+			request.getRequestDispatcher("/applications_ID.html").forward(request, response);
+			//response.sendRedirect("applications");
+			System.out.println("After dispatch Attempt");
 		}
 	}
 

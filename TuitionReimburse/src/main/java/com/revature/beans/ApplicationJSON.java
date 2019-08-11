@@ -12,7 +12,6 @@ public class ApplicationJSON
 	}
 
 	public ApplicationJSON(Application app, Event eve, EventLocation eveLoc, EventType eveType) 
-	
 	{
 		super();
 		this.applicationID = ""+app.getAppID();
