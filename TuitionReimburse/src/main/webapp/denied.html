@@ -3,6 +3,7 @@
         <title>Denied Applications</title>
         <meta charset="ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="style/main.css">
+        <link rel="stylesheet" type="text/css" href="style/employee_account.css">
     </head>
     <body>
         <div class="top_content">
@@ -14,9 +15,7 @@
         </div>
 
         <div class="navbar">
-            <nav>
-                    <button id="home">Home</button> |
-                    
+            <nav>   
                     <button id="account">
                     My Account</button> | 
                 
@@ -36,10 +35,15 @@
 
 <div id="info_container">
     <div>
-        <h3>Denied Applications</h3>
+        <h3>Denied</h3><span class="error">Please enter reason for Denial</span>
     </div>
-    <div id="employee_listing">
-        <!--insert employee list  -->
+    <div><br>
+    <form method="post">
+        Reason:<span class="error">*</span><br>
+        <textarea id="reason" required></textarea><br><br>
+        <button class="button1" id="denied">SEND</button>
+    </form>
+        
     </div>
     
 </div>

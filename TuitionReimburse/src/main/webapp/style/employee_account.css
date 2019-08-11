@@ -15,3 +15,7 @@ textarea {
     height:150px;
     resize:none;
 }
+
+#cost {
+    width:155px;
+}
