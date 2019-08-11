@@ -71,4 +71,10 @@ public class EventLocation
 	{
 		this.zipcode = zipcode;
 	}
+
+	@Override
+	public String toString() {
+		return "EventLocation [locationID=" + locationID + ", location=" + location + ", city=" + city + ", state="
+				+ state + ", zipcode=" + zipcode + "]";
+	}
 }

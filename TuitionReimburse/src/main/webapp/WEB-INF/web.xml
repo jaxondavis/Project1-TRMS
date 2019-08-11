@@ -43,12 +43,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>MyAccountApplicationServlet</display-name>
-    <servlet-name>MyAccountApplicationServlet</servlet-name>
-    <servlet-class>com.revature.servlet.MyAccountApplicationServlet</servlet-class>
+    <display-name>MyAccountApplicationsServlet</display-name>
+    <servlet-name>MyAccountApplicationsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountApplicationsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MyAccountApplicationServlet</servlet-name>
+    <servlet-name>MyAccountApplicationsServlet</servlet-name>
     <url-pattern>/myAccount/applications</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -180,5 +180,15 @@
   <servlet-mapping>
     <servlet-name>LoadAccountServlet</servlet-name>
     <url-pattern>/loadAccount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoadApplcations</display-name>
+    <servlet-name>LoadApplcations</servlet-name>
+    <servlet-class>com.revature.servlet.LoadApplcationsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadApplcations</servlet-name>
+    <url-pattern>/myAccount/loadApplications</url-pattern>
   </servlet-mapping>
 </web-app>
