@@ -19,26 +19,25 @@ public class MyAccountEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 * Checks to confirm session isn't void, then gets current session.
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response) Checks to confirm session isn't void, then gets current
+	 *      session.
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = null;
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-	//	EmployeeHasTypeImpl ehti = new EmployeeHasTypeImpl();
-	//	EmployeeTypeImpl eti = new EmployeeTypeImpl();
+		// EmployeeHasTypeImpl ehti = new EmployeeHasTypeImpl();
+		// EmployeeTypeImpl eti = new EmployeeTypeImpl();
 		Employee empl = null;
 		String emplType = null;
-		
-		if (request.getSession() == null)
-		{
+
+		if (request.getSession() == null) {
 			System.out.println("Returning to login page.");
 			request.getRequestDispatcher("login.html").include(request, response);
-		}
-		else
-		{
+		} else {
 			session = request.getSession();
-			Integer emplID = (Integer)session.getAttribute("emplID");
+			Integer emplID = (Integer) session.getAttribute("emplID");
 			try {
 				empl = edi.getEmployee(emplID);
 			} catch (SQLException e) {
@@ -49,12 +48,14 @@ public class MyAccountEditServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 * Sends all info to the appropriate DAO implementation (EmployeeDaoImpl?)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response) Sends all info to the appropriate DAO implementation
+	 *      (EmployeeDaoImpl?)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		//TODO: How am I getting the values from the form?
+		// TODO: How am I getting the values from the form?
 		doGet(request, response);
 	}
 

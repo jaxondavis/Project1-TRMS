@@ -2,9 +2,8 @@ package com.revature.beans;
 
 import java.sql.Date;
 
-public class Event 
-{
-	
+public class Event {
+
 	private int eventID;
 	private String eventName;
 	private Date eventDate;
@@ -14,14 +13,13 @@ public class Event
 	private int locationID;
 	private int formatID;
 	private int typeID;
-	
-	public Event() 
-	{
-		
+
+	public Event() {
+
 	}
 
-	public Event(int eventID, String eventName, Date eventDate, Date eventTime, double eventCost, String eventDesc, int locationID, int formatID, int typeID) 
-	{
+	public Event(int eventID, String eventName, Date eventDate, Date eventTime, double eventCost, String eventDesc,
+			int locationID, int formatID, int typeID) {
 		this.eventID = eventID;
 		this.eventName = eventName;
 		this.eventDate = eventDate;
@@ -33,93 +31,75 @@ public class Event
 		this.typeID = typeID;
 	}
 
-	public int getEventID() 
-	{
+	public int getEventID() {
 		return eventID;
 	}
 
-	public void setEventID(int eventID) 
-	{
+	public void setEventID(int eventID) {
 		this.eventID = eventID;
 	}
 
-	public String getEventName() 
-	{
+	public String getEventName() {
 		return eventName;
 	}
 
-	public void setEventName(String eventName) 
-	{
+	public void setEventName(String eventName) {
 		this.eventName = eventName;
 	}
 
-	public Date getEventDate() 
-	{
+	public Date getEventDate() {
 		return eventDate;
 	}
 
-	public void setEventDate(Date eventDate) 
-	{
+	public void setEventDate(Date eventDate) {
 		this.eventDate = eventDate;
 	}
 
-	public Date getEventTime() 
-	{
+	public Date getEventTime() {
 		return eventTime;
 	}
 
-	public void setEventTime(Date eventTime) 
-	{
+	public void setEventTime(Date eventTime) {
 		this.eventTime = eventTime;
 	}
 
-	public double getEventCost() 
-	{
+	public double getEventCost() {
 		return eventCost;
 	}
 
-	public void setEventCost(double eventCost) 
-	{
+	public void setEventCost(double eventCost) {
 		this.eventCost = eventCost;
 	}
 
-	public String getEventDesc() 
-	{
+	public String getEventDesc() {
 		return eventDesc;
 	}
 
-	public void setEventDesc(String eventDesc) 
-	{
+	public void setEventDesc(String eventDesc) {
 		this.eventDesc = eventDesc;
 	}
 
-	public int getLocationID() 
-	{
+	public int getLocationID() {
 		return locationID;
 	}
 
-	public void setLocationID(int locationID) 
-	{
+	public void setLocationID(int locationID) {
 		this.locationID = locationID;
 	}
 
-	public int getFormatID() 
-	{
+	public int getFormatID() {
 		return formatID;
 	}
 
-	public void setFormatID(int formatID) 
-	{
+	public void setFormatID(int formatID) {
 		this.formatID = formatID;
 	}
 
-	public int getTypeID() 
-	{
+	public int getTypeID() {
 		return typeID;
 	}
 
-	public void setTypeID(int typeID) 
-	{
+	public void setTypeID(int typeID) {
 		this.typeID = typeID;
 	}
 

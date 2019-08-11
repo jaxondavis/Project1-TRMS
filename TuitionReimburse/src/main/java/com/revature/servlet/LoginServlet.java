@@ -18,30 +18,32 @@ import com.revature.daoimpl.EmployeeDaoImpl;
  */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
-	//Creates request to access login page.
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+
+	// Creates request to access login page.
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("In doGet of LoginServlet");
-		//Use RequestDispatcher to present login page.
+		// Use RequestDispatcher to present login page.
 		RequestDispatcher rd = request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		//request.getRequestDispatcher("index.html").include(request, response); //Do we need this?
+		// request.getRequestDispatcher("index.html").include(request, response); //Do
+		// we need this?
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		//Check against DaoImpl here. User/PW combo. Verification in EmployeeDaoImpl.
+
+		// Check against DaoImpl here. User/PW combo. Verification in EmployeeDaoImpl.
 		int employeeID = 0;
 		try {
 			employeeID = edi.verifyPassword(email, password);
@@ -49,32 +51,30 @@ public class LoginServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (employeeID > 0)
-		{
+		if (employeeID > 0) {
 			out.print("Welcome, " + email);
 			HttpSession session = request.getSession();
-			
-	//		Cookie cookie = new Cookie("emplID", employeeID+""); //May not be needed if we're using session.
-	//		response.addCookie(cookie);
-			
-			session.setAttribute("name", email);			//Will these be necessary? Can we remove these and just use the cookie?
+
+			// Cookie cookie = new Cookie("emplID", employeeID+""); //May not be needed if
+			// we're using session.
+			// response.addCookie(cookie);
+
+			session.setAttribute("name", email); // Will these be necessary? Can we remove these and just use the
+													// cookie?
 			session.setAttribute("emplID", employeeID);
 			response.sendRedirect("myAccount");
-		}
-		else
-		{
+		} else {
 			out.print("Sorry, username or password error.");
 			request.getRequestDispatcher("login.html").include(request, response);
 		}
-		
+
 		out.close();
 	}
-	
-	
-	//Updates login info to be passed to LoginDaoImpl.
-	//TODO: Complete implementation once DAO is completed.
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+
+	// Updates login info to be passed to LoginDaoImpl.
+	// TODO: Complete implementation once DAO is completed.
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("In doPut of LoginServlet");
 	}
 

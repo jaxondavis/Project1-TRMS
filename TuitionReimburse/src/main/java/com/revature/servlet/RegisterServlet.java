@@ -15,39 +15,43 @@ import com.revature.daoimpl.EmployeeDaoImpl;
  */
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegisterServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RegisterServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		request.getRequestDispatcher("link.html").include(request, response);
-		
+
 		EmployeeDaoImpl edi = new EmployeeDaoImpl();
-		
+
 		String first = request.getParameter("firstname");
 		String last = request.getParameter("password");
 		String dob = request.getParameter("birthdate");
 		int supervisor = Integer.parseInt(request.getParameter("reportsTo"));
 		String address = request.getParameter("address");
-		
+
 //		try 
 //		{
 //			edi.insertEmployee(first, last, dob, supervisor, address);
@@ -56,10 +60,10 @@ public class RegisterServlet extends HttpServlet {
 //		{
 //			e.printStackTrace();
 //		}
-		
+
 		out.print("Sorry, username or password error.");
 		request.getRequestDispatcher("login.html").include(request, response);
-		
+
 		out.close();
 	}
 

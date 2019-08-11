@@ -11,7 +11,7 @@ import com.revature.dao.PresentationDao;
 import com.revature.util.ConnFactory;
 
 public class PresentationDaoImpl implements PresentationDao {
-	
+
 	public static ConnFactory cf = ConnFactory.getInstance();
 
 	@Override
@@ -29,7 +29,7 @@ public class PresentationDaoImpl implements PresentationDao {
 		CallableStatement call = conn.prepareCall(sql);
 		call.setInt(1, presID);
 		call.setString(2, newPath);
-		
+
 	}
 
 	@Override
@@ -48,24 +48,21 @@ public class PresentationDaoImpl implements PresentationDao {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, presID);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next())
-		{
-			//ResultSet columns start at 1.
+		while (rs.next()) {
+			// ResultSet columns start at 1.
 			pres = new Presentation(rs.getInt(1), rs.getString(2));
 		}
 		return pres;
 	}
-	
+
 	@Override
-	public int getCurrentIndex() throws SQLException
-	{
+	public int getCurrentIndex() throws SQLException {
 		int max = 1;
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM PRESENTATIONS";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next())
-		{
+		while (rs.next()) {
 			max = rs.getInt(1);
 		}
 		return max;

@@ -1,12 +1,10 @@
 package com.revature.beans;
 
-public class GradingFormat 
-{
+public class GradingFormat {
 	private int formatID;
 	private String formatType;
-	
-	public GradingFormat() 
-	{
+
+	public GradingFormat() {
 		// TODO Auto-generated constructor stub
 	}
 

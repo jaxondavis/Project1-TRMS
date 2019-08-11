@@ -16,35 +16,30 @@ import com.revature.util.ConnFactory;
  */
 
 public class AddressDaoImpl implements AddressDao {
-	
+
 	public static ConnFactory cf = ConnFactory.getInstance();
 
-	//Creates Address object based off of address ID. May not be necessary?
+	// Creates Address object based off of address ID. May not be necessary?
 	@Override
-	public Address getAddress(int addrID) throws SQLException 
-	{
+	public Address getAddress(int addrID) throws SQLException {
 		Address add = null;
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM ADDRESS WHERE ADDRESSID = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, addrID);
 		ResultSet rs = ps.executeQuery();
-		if (rs.equals(null))
-		{
-			System.out.println("No address found for "+addrID);
-		}
-		else
-		{
-			while (rs.next())
-			{
+		if (rs.equals(null)) {
+			System.out.println("No address found for " + addrID);
+		} else {
+			while (rs.next()) {
 				add = new Address(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 			}
 		}
-		
+
 		return add;
 	}
 
-	//Should revise to include column name & new value as args.
+	// Should revise to include column name & new value as args.
 	@Override
 	public void editAddress(int addrID, String column, String newVal) throws SQLException {
 		Connection conn = cf.getConnection();
@@ -57,7 +52,7 @@ public class AddressDaoImpl implements AddressDao {
 		System.out.println("Address has been altered.");
 	}
 
-	//Removes address from table.
+	// Removes address from table.
 	@Override
 	public void removeAddress(int addrID) throws SQLException {
 		Connection conn = cf.getConnection();
@@ -68,7 +63,7 @@ public class AddressDaoImpl implements AddressDao {
 		System.out.println("Address has been removed.");
 	}
 
-	//Should add address using params.
+	// Should add address using params.
 	@Override
 	public void addAddress(String addr, String city, String state, String zip) throws SQLException {
 		Connection conn = cf.getConnection();
@@ -82,7 +77,8 @@ public class AddressDaoImpl implements AddressDao {
 		System.out.println("Sequence complete!");
 	}
 
-	//Confirms address exists in table. If so, returns its address ID. If not, returns 0.
+	// Confirms address exists in table. If so, returns its address ID. If not,
+	// returns 0.
 	@Override
 	public int confirmAddress(String addr, String city, String state, String zip) throws SQLException {
 		int addrID = 0;
@@ -94,9 +90,8 @@ public class AddressDaoImpl implements AddressDao {
 		ps.setString(3, state);
 		ps.setString(4, zip);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next())
-		{
-			//ResultSet columns start at 1.
+		while (rs.next()) {
+			// ResultSet columns start at 1.
 			addrID = rs.getInt(1);
 		}
 		return addrID;

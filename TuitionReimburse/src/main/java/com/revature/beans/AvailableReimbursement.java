@@ -1,38 +1,31 @@
 package com.revature.beans;
 
-public class AvailableReimbursement 
-{
+public class AvailableReimbursement {
 	private int availID;
 	private double availFunds;
-	
-	public AvailableReimbursement() 
-	{
-		
+
+	public AvailableReimbursement() {
+
 	}
 
-	public AvailableReimbursement(int availID, double availFunds) 
-	{
+	public AvailableReimbursement(int availID, double availFunds) {
 		this.availID = availID;
 		this.availFunds = availFunds;
 	}
 
-	public int getAvailID() 
-	{
+	public int getAvailID() {
 		return availID;
 	}
 
-	public void setAvailID(int availID) 
-	{
+	public void setAvailID(int availID) {
 		this.availID = availID;
 	}
 
-	public double getAvailFunds() 
-	{
+	public double getAvailFunds() {
 		return availFunds;
 	}
 
-	public void setAvailFunds(double availFunds) 
-	{
+	public void setAvailFunds(double availFunds) {
 		this.availFunds = availFunds;
 	}
 }

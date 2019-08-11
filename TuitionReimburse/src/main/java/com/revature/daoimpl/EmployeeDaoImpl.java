@@ -18,8 +18,7 @@ import com.revature.util.ConnFactory;
 public class EmployeeDaoImpl {
 	public static ConnFactory cf = ConnFactory.getInstance();
 
-	
-	//TODO: create update method to utilize the procedure
+	// TODO: create update method to utilize the procedure
 	public String getName(Integer employeeid) throws SQLException {
 		Connection conn = cf.getConnection();
 		String name = null;
@@ -27,8 +26,7 @@ public class EmployeeDaoImpl {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, employeeid);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next())
-		{
+		while (rs.next()) {
 			name = rs.getString(1) + " " + rs.getString(2);
 		}
 		return name;
@@ -41,8 +39,7 @@ public class EmployeeDaoImpl {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, employeeid);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next())
-		{
+		while (rs.next()) {
 			typeID = rs.getInt(1);
 		}
 		return typeID;
@@ -55,47 +52,38 @@ public class EmployeeDaoImpl {
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, employeeid);
 		ResultSet rs = ps.executeQuery();
-		if (rs.equals(null))
-		{
+		if (rs.equals(null)) {
 			System.out.println("Invalid login. Please try again.");
-		}
-		else
-		{
-			while (rs.next())
-			{
-				employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
-						rs.getInt(6),rs.getInt(7));
+		} else {
+			while (rs.next()) {
+				employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5),
+						rs.getInt(6), rs.getInt(7));
 			}
 		}
-		
+
 		return employee;
 	}
 
 	public String getReportsTo(int reportsTo) throws SQLException {
-		String employeeName="";
+		String employeeName = "";
 		Connection conn = cf.getConnection();
 		String sql = "SELECT firstname, lastname FROM EMPLOYEE WHERE REPORTSTO = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, reportsTo);
 		ResultSet rs = ps.executeQuery();
-		if (rs.equals(null))
-		{
+		if (rs.equals(null)) {
 			System.out.println("Invalid login. Please try again.");
-		}
-		else
-		{
-			while (rs.next())
-			{
+		} else {
+			while (rs.next()) {
 				employeeName += rs.getString(1) + " " + rs.getString(2);
 			}
 		}
-		
+
 		return employeeName;
 	}
-	
-	//Uses stored procedure to delete employee from table.
-	public void deleteEmployee(Integer employeeID) throws SQLException
-	{
+
+	// Uses stored procedure to delete employee from table.
+	public void deleteEmployee(Integer employeeID) throws SQLException {
 		Connection conn = cf.getConnection();
 		String sql = "{ call deleteemployee(?)";
 		CallableStatement call = conn.prepareCall(sql);
@@ -103,48 +91,42 @@ public class EmployeeDaoImpl {
 		call.execute();
 		System.out.println("Employee has been DELETED! YEEEEEEEEAAAASSSSSSSSS.");
 	}
-	
-	//Returns list of employees that report to a given user. Will need to access ReportsTo table. Check into this.
-	public List<Employee> viewEmployeesReportingTo(Integer reportsTo) throws SQLException
-	{
+
+	// Returns list of employees that report to a given user. Will need to access
+	// ReportsTo table. Check into this.
+	public List<Employee> viewEmployeesReportingTo(Integer reportsTo) throws SQLException {
 		Connection conn = cf.getConnection();
 		ArrayList<Employee> employeeList = new ArrayList<Employee>();
 		String sql = "SELECT * FROM EMPLOYEE WHERE REPORTSTO = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, reportsTo);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next())
-		{
-			//Don't understand why this is throwing an error. It matches the args for the constructor...
-			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),rs.getInt(5),
-					rs.getInt(6),rs.getInt(7));
+		while (rs.next()) {
+			// Don't understand why this is throwing an error. It matches the args for the
+			// constructor...
+			Employee employee = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),
+					rs.getInt(5), rs.getInt(6), rs.getInt(7));
 			employeeList.add(employee);
 		}
 		return employeeList;
 	}
-	
-	public int verifyPassword(String email, String pass) throws SQLException
-	{
+
+	public int verifyPassword(String email, String pass) throws SQLException {
 		int empID = 0;
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM LOGIN";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
-		if (rs.equals(null))
-		{
+		if (rs.equals(null)) {
 			System.out.println("Invalid login. Please try again.");
-		}
-		else
-		{
-			while (rs.next())
-			{
-				if(email.equals(rs.getString(3)) && pass.equals(rs.getString(2)))
-				{
+		} else {
+			while (rs.next()) {
+				if (email.equals(rs.getString(3)) && pass.equals(rs.getString(2))) {
 					empID = rs.getInt(4);
 				}
 			}
 		}
-		
+
 		return empID;
 	}
 }

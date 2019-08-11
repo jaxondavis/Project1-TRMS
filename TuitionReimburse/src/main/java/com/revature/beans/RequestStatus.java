@@ -1,13 +1,11 @@
 package com.revature.beans;
 
-public class RequestStatus 
-{
+public class RequestStatus {
 
 	private int requestID;
 	private String status;
-	
-	public RequestStatus() 
-	{
+
+	public RequestStatus() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -37,6 +35,5 @@ public class RequestStatus
 	public String toString() {
 		return "RequestStatus [requestID=" + requestID + ", status=" + status + "]";
 	}
-	
-	
+
 }

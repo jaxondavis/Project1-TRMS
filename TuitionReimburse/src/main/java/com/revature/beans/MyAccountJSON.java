@@ -3,26 +3,22 @@ package com.revature.beans;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class MyAccountJSON implements Serializable
-{
-	
+public class MyAccountJSON implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String firstname, lastname, email, password, type, address, city, state, zipcode;
 	private Date birthdate;
 	private int employeeid, reportsto;
-	
-	
-	public MyAccountJSON() 
-	{
-		
+
+	public MyAccountJSON() {
+
 	}
-	
-	public MyAccountJSON(Employee emp, Address add, Login log, EmployeeHasType empType)
-	{
+
+	public MyAccountJSON(Employee emp, Address add, Login log, EmployeeHasType empType) {
 		employeeid = emp.getEmployeeID();
 		firstname = emp.getFirstname();
 		lastname = emp.getLastname();
@@ -34,17 +30,16 @@ public class MyAccountJSON implements Serializable
 		city = add.getCity();
 		state = add.getState();
 		zipcode = add.getZipcode();
-		
-		switch(empType.getTypeID())
-		{
-			case 1:
-				type = "Employee";
-			case 2:
-				type = "Direct Supervisor";
-			case 3:
-				type = "Department Head";
-			case 4:
-				type = "Benefits Coordinator";
+
+		switch (empType.getTypeID()) {
+		case 1:
+			type = "Employee";
+		case 2:
+			type = "Direct Supervisor";
+		case 3:
+			type = "Department Head";
+		case 4:
+			type = "Benefits Coordinator";
 		}
 	}
 
@@ -146,7 +141,6 @@ public class MyAccountJSON implements Serializable
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}	
-	
-	
+	}
+
 }

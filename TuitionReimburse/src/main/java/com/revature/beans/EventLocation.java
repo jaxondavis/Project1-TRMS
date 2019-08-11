@@ -1,20 +1,17 @@
 package com.revature.beans;
 
-public class EventLocation 
-{
+public class EventLocation {
 	private int locationID;
 	private String location;
 	private String city;
 	private String state;
 	private String zipcode;
-	
-	public EventLocation() 
-	{
-		
+
+	public EventLocation() {
+
 	}
 
-	public EventLocation(int locationID, String location, String city, String state, String zipcode)
-	{
+	public EventLocation(int locationID, String location, String city, String state, String zipcode) {
 		this.locationID = locationID;
 		this.location = location;
 		this.city = city;
@@ -22,53 +19,43 @@ public class EventLocation
 		this.zipcode = zipcode;
 	}
 
-	public int getLocationID() 
-	{
+	public int getLocationID() {
 		return locationID;
 	}
 
-	public void setLocationID(int locationID) 
-	{
+	public void setLocationID(int locationID) {
 		this.locationID = locationID;
 	}
 
-	public String getLocation() 
-	{
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) 
-	{
+	public void setLocation(String location) {
 		this.location = location;
 	}
 
-	public String getCity() 
-	{
+	public String getCity() {
 		return city;
 	}
 
-	public void setCity(String city) 
-	{
+	public void setCity(String city) {
 		this.city = city;
 	}
 
-	public String getState() 
-	{
+	public String getState() {
 		return state;
 	}
 
-	public void setState(String state) 
-	{
+	public void setState(String state) {
 		this.state = state;
 	}
 
-	public String getZipcode() 
-	{
+	public String getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(String zipcode) 
-	{
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 }

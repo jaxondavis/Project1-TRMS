@@ -1,38 +1,31 @@
 package com.revature.beans;
 
-public class Presentation 
-{
+public class Presentation {
 	private int presID;
 	private String presPath;
-	
-	public Presentation() 
-	{
-		
+
+	public Presentation() {
+
 	}
 
-	public Presentation(int presID, String presPath) 
-	{
+	public Presentation(int presID, String presPath) {
 		this.presID = presID;
 		this.presPath = presPath;
 	}
 
-	public int getPresID()
-	{
+	public int getPresID() {
 		return presID;
 	}
 
-	public void setPresID(int presID) 
-	{
+	public void setPresID(int presID) {
 		this.presID = presID;
 	}
 
-	public String getPresPath() 
-	{
+	public String getPresPath() {
 		return presPath;
 	}
 
-	public void setPresPath(String presPath) 
-	{
+	public void setPresPath(String presPath) {
 		this.presPath = presPath;
 	}
 }

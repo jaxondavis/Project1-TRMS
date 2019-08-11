@@ -1,38 +1,31 @@
 package com.revature.beans;
 
-public class Grade 
-{
+public class Grade {
 	private int gradeID;
 	private String grade;
-	
-	public Grade() 
-	{
-		
+
+	public Grade() {
+
 	}
 
-	public Grade(int gradeID, String grade) 
-	{
+	public Grade(int gradeID, String grade) {
 		this.gradeID = gradeID;
 		this.grade = grade;
 	}
 
-	public int getGradeID() 
-	{
+	public int getGradeID() {
 		return gradeID;
 	}
 
-	public void setGradeID(int gradeID) 
-	{
+	public void setGradeID(int gradeID) {
 		this.gradeID = gradeID;
 	}
 
-	public String getGrade() 
-	{
+	public String getGrade() {
 		return grade;
 	}
 
-	public void setGrade(String grade) 
-	{
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 }

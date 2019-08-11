@@ -1,14 +1,12 @@
 package com.revature.beans;
 
-public class EventType 
-{
+public class EventType {
 
 	private int eventTypeID;
 	private String eventTypeString;
 	private double eventCoverage;
-	
-	public EventType() 
-	{
+
+	public EventType() {
 		// TODO Auto-generated constructor stub
 	}
 
