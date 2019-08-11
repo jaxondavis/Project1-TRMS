@@ -44,7 +44,7 @@
 
 <div id="info_container">
     <div>
-        <h3>Edit Application</h3>
+        <h3>Edit Application <span id="app_id_num">&nbsp </span></h3>
          <p class="error">*denotes a required field</p>
     </div>
     <div id="applications_id">
@@ -121,9 +121,9 @@
                 <div class="form_container"><br>
                     <hr>
                     <h3>Attachments:</h3>
-                    <form action="#" method="post" enctype="multipart/form-data" >
-                        <input type="file" name="fileName">
-                        <button id="submit" class="button1">Upload Attachment</button>
+                    <form action="UploadDownloadFileServlet" method="post" enctype="multipart/form-data" >
+                        <input type="file" name="fileName" id="choose">
+                        <button id="upload" class="button1">Upload Attachment</button>
                     </form>           
                 </div>
     
