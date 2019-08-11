@@ -183,32 +183,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-<<<<<<< HEAD
-    <display-name>MyEmployeesApplicationListServlet</display-name>
-    <servlet-name>MyEmployeesApplicationListServlet</servlet-name>
-    <servlet-class>com.revature.servlet.MyEmployeesApplicationListServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MyEmployeesApplicationListServlet</servlet-name>
-    <url-pattern>/myAccount/myEmployees/applications</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>MyAccountApplicationListServlet</display-name>
     <servlet-name>MyAccountApplicationListServlet</servlet-name>
     <servlet-class>com.revature.servlet.MyAccountApplicationListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MyAccountApplicationListServlet</servlet-name>
-    <url-pattern>/myAccount/applications</url-pattern>
-=======
-    <display-name>LoadApplcations</display-name>
-    <servlet-name>LoadApplcations</servlet-name>
-    <servlet-class>com.revature.servlet.LoadApplcationsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
     <servlet-name>LoadApplcations</servlet-name>
     <url-pattern>/myAccount/loadApplications</url-pattern>
->>>>>>> d140fc92882c587028aab56bfba263d384848413
   </servlet-mapping>
 </web-app>
