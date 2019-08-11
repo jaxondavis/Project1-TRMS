@@ -34,15 +34,24 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc7-12.2.0.1.jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="ignore_optional_problems" value="true"/>
 			<attribute name="m2e-apt" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-io-2.6-bin/commons-io-2.6/commons-io-2.6-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/brazi/Downloads/commons-fileupload-1.4-bin/commons-fileupload-1.4-bin/commons-fileupload-1.4-test-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
