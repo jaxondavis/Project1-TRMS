@@ -8,6 +8,8 @@ applicationList.forEach(element => {
     div.id = element.applicationID;
     p.innerText = "Event Name: "+element.eventName + " Event Date: " + element.eventDate + " Event Time: " + element.eventTime + " Application Status: " + element.requestStatus;
     btn.innerText = "View"
+    //btn.name = "appID";
+    //btn.type = "submit";
     btn.addEventListener("click", clickViewApplication,false);
     div.append(p);
     div.append(btn);
@@ -30,8 +32,9 @@ var clickViewApplication = (event)=>{
             //loadApplication(xhr.responseText);
         }
     }
-
-    xhr.open("POST", "http://localhost:8080/TuitionReimburse/myAccount/loadApplications",true);
+    
+    //xhr.open("POST", "http://localhost:8080/TuitionReimburse/myAccount/loadApplications",true);
+    xhr.open("POST", "http://localhost:8080/TuitionReimburse/myAccount/applications/applicationID",true);
     //let payload = jsonBuilder(id);
     //console.log(payload);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

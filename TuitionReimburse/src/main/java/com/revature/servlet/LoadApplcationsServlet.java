@@ -117,6 +117,7 @@ public class LoadApplcationsServlet extends HttpServlet {
 			session = request.getSession();
 			Integer appID = Integer.parseInt(request.getParameter("appID"));
 			session.setAttribute("appID", appID);
+			//Integer appID = (Integer)session.getAttribute("appID");
 			System.out.println(appID);
 			Integer emplID = (Integer)session.getAttribute("emplID");
 			try 
@@ -138,7 +139,11 @@ public class LoadApplcationsServlet extends HttpServlet {
 					//response.setCharacterEncoding("UTF-8");
 					//pw.print(jsonString);
 					pw.print(gSon.toJson(json));
-					//request.getRequestDispatcher("/applications").forward(request, response);
+					//request.getRequestDispatcher("/application_ID.html").forward(request, response);
+					
+					System.out.println("at the end of dopost");
+					//response.sendRedirect("/myAccount/applications/applicationID");
+					System.out.println("after send redirect");
 				}
 				else
 				{
