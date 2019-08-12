@@ -40,7 +40,7 @@ public class MyAccountApplicationListServlet extends HttpServlet {
 		{
 			try {
 				Integer employeeID = (Integer)session.getAttribute("employeeID");
-				appList = new ArrayList<Application>(adi.getApplicationList(employeeID));
+				appList = new ArrayList<Application>(adi.getAllApplicationsFromEmployee(employeeID));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
