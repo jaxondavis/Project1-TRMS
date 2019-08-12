@@ -129,4 +129,5 @@ public class Event
 				+ eventTime + ", eventCost=" + eventCost + ", eventDesc=" + eventDesc + ", locationID=" + locationID
 				+ ", formatID=" + formatID + ", typeID=" + typeID + "]";
 	}
+
 }

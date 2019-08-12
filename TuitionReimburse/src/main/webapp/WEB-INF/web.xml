@@ -183,12 +183,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>LoadApplcations</display-name>
-    <servlet-name>LoadApplcations</servlet-name>
-    <servlet-class>com.revature.servlet.LoadApplcationsServlet</servlet-class>
+    <display-name>MyAccountApplicationListServlet</display-name>
+    <servlet-name>MyAccountApplicationListServlet</servlet-name>
+    <servlet-class>com.revature.servlet.MyAccountApplicationListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoadApplcations</servlet-name>
     <url-pattern>/myAccount/loadApplications</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UploadAttachmentServlet</display-name>
+    <servlet-name>UploadAttachmentServlet</servlet-name>
+    <servlet-class>com.revature.servlet.UploadAttachmentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadAttachmentServlet</servlet-name>
+    <url-pattern>/UploadAttachmentServlet</url-pattern>
   </servlet-mapping>
 </web-app>
