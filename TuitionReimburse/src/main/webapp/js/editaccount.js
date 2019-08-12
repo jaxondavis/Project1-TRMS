@@ -161,7 +161,7 @@ window.onload = ()=>{
     document.querySelector("#account").addEventListener("click", clickAccount, false);
     document.querySelector("#applications").addEventListener("click", clickApplications, false);
     document.querySelector("#events").addEventListener("click", clickEvents, false);
-    document.querySelector("#editaccount").addEventListener("click", clickEditAccount, false);
+    //document.querySelector("#editaccount").addEventListener("click", clickEditAccount, false);
     document.querySelector("#logout").addEventListener("click", clickLogout, false);
     document.querySelector("#submit").addEventListener("submit", clickSubmit, false);
 }

@@ -15,6 +15,21 @@ applicationList.forEach(element => {
 });
 }
 
+var getApplications = ()=>{
+    let xhr = new XMLHttpRequest();
+    console.log("in getApplications");
+    xhr.onreadystatechange = ()=>{
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.readyState +" "+xhr.status)
+            let applications= JSON.parse(xhr.response);
+            console.log(applications);
+            loadApplications(applications);
+        }
+    }
+    xhr.open("GET", "http://localhost:8080/TuitionReimburse/myAccount/loadApplications", true);
+    xhr.send();
+}
+
 var clickViewApplication = (event)=>{
     //gets parent node's id then send request
     let currBtn = event.target;
@@ -47,21 +62,6 @@ var jsonBuilder = (id)=>{
     return s;
 }
 
-var getApplications = ()=>{
-    let xhr = new XMLHttpRequest();
-    console.log("in getApplications");
-    xhr.onreadystatechange = ()=>{
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.readyState +" "+xhr.status)
-            let applications= JSON.parse(xhr.response);
-            console.log(applications);
-            loadApplications(applications);
-        }
-    }
-    xhr.open("GET", "http://localhost:8080/TuitionReimburse/myAccount/loadApplications", true);
-    xhr.send();
-}
-
 var clickHome = ()=>{
     let xhr = new XMLHttpRequest();
 
@@ -77,7 +77,7 @@ var clickHome = ()=>{
 }
 
 var clickAccount = ()=>{
-    let xhr = new XMLHttpRequest();
+    /* let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200){
@@ -87,11 +87,12 @@ var clickAccount = ()=>{
     }
 
     xhr.open("GET", "http://localhost:8080/TuitionReimburse/myAccount",true);
-    xhr.send();
+    xhr.send(); */
+    window.location.pathname = "/TuitionReimburse/myAccount";
 }
 
 var clickApplications = ()=>{
-    let xhr = new XMLHttpRequest();
+    /* let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200){
@@ -101,11 +102,12 @@ var clickApplications = ()=>{
     }
 
     xhr.open("GET", "http://localhost:8080/TuitionReimburse/myAccount/applications",true);
-    xhr.send();
+    xhr.send(); */
+    window.location.pathname = "/TuitionReimburse/applications";
 }
 
 var clickEvents = ()=>{
-    let xhr = new XMLHttpRequest();
+    /* let xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = ()=>{
         if(xhr.readyState == 4 && xhr.status == 200){
@@ -115,7 +117,8 @@ var clickEvents = ()=>{
     }
 
     xhr.open("GET", "http://localhost:8080/TuitionReimburse/events",true);
-    xhr.send();
+    xhr.send(); */
+    window.location.pathname = "/TuitionReimburse/events";
 }
 
 var clickLogout = ()=>{
@@ -127,7 +130,6 @@ var clickLogout = ()=>{
             
         }
     }
-
     xhr.open("GET", "http://localhost:8080/TuitionReimburse/logout",true);
     xhr.send();
 }
@@ -135,10 +137,10 @@ var clickLogout = ()=>{
 window.onload = ()=>{
     getApplications();
     //document.querySelector("#home").addEventListener("click", clickHome, false);
-    /* document.querySelector("#account").addEventListener("click", clickAccount, false);
-    document.querySelector("#applications").addEventListener("click", clickApplications, false);
+    document.querySelector("#account").addEventListener("click", clickAccount, false);
+    document.querySelector("#applicationsBtn").addEventListener("click", clickApplications, false);
     document.querySelector("#events").addEventListener("click", clickEvents, false);
-    document.querySelector("#editaccount").addEventListener("click", clickEditAccount, false);
-    document.querySelector("#logout").addEventListener("click", clickLogout, false); */
+    //document.querySelector("#editaccount").addEventListener("click", clickEditAccount, false);
+    document.querySelector("#logout").addEventListener("click", clickLogout, false);
     //document.querySelector("#submit").addEventListener("submit", clickSubmit, false);
 }
